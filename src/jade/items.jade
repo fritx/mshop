@@ -1,0 +1,26 @@
+extends layout
+
+block head
+  - var name = 'items';
+  link(rel='stylesheet'
+  href='css/#{name}-bundle.min.css')
+  script(src='js/#{name}-bundle.min.js')
+
+block header
+  include header
+
+block content
+  #sort-box.pure-skin-pink
+    a.pure-button.sort-key(data-by='!sales') 销量
+    a.pure-button.sort-key(data-by='-price') 价格
+
+  script#item-tmpl(type='text/x-template')
+    li.pure-u-1-2.item-li
+      a.item-box(href='detail.html?id={{- id }}')
+        .item
+          .img-box
+            img.lazy(data-original='{{- image }}')
+          .desc-box
+            .title {{- title }}
+            .price ￥{{- _price.toFixed(1) }}
+  ul#items-list.pure-g

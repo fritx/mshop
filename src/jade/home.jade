@@ -1,0 +1,54 @@
+extends layout
+
+block head
+  - var name = 'home';
+  link(rel='stylesheet'
+  href='css/#{name}-bundle.min.css')
+  script(src='js/#{name}-bundle.min.js')
+
+block header
+  #banner
+    img(src='content/images/shop/banner-2.jpg')
+
+block content
+  #search.pure-g.pure-skin-pink
+    .pure-u-4-5.input-box
+      input(type='text')
+    .pure-u-1-5.btn-box
+      a.pure-button(onclick='doSearch()')
+        i.fa.fa-search
+  #nav
+    .pure-g
+      .pure-u-1-4
+        a.nav-btn.pull-left(href='items.html?tags=日用')
+          i.fa.fa-sun-o
+          span 日用
+      .pure-u-1-4
+        a.nav-btn.pull-center(href='items.html?tags=夜用')
+          i.fa.fa-moon-o
+          span 夜用
+      .pure-u-1-4
+        a.nav-btn.pull-center(href='items.html?tags=护垫')
+          i.fa.fa-heart-o
+          span 护垫
+      .pure-u-1-4
+        .nav-box
+          a#brands-btn.nav-btn.pull-right(onclick='showBrands()')
+            i.fa.fa-gift
+            span 品牌
+
+  script#brand-tmpl(type='text/x-template')
+    li.pure-u-1-2
+      a(href='items.html?brand={{- name }}') {{- name }}
+
+  #brands-div.pure-skin-pink.hidden
+    .pure-menu.pure-menu-open.menu
+      a.pure-menu-heading.title 品牌列表
+      ul.pure-g.list
+
+  script#hero-tmpl(type='text/x-template')
+    li.hero-li
+      | <a{{= url ? ' href="' + url + '"': ' class="default"' }}>
+      img.lazy(data-original='{{= src }}')
+      | </a>
+  ul#heros-list

@@ -1,0 +1,6 @@
+.idea
+node_modules
+bower_components
+tmp
+src/jade/*.html
+src/less/*.css

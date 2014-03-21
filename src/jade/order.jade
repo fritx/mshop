@@ -1,0 +1,52 @@
+extends layout
+
+block head
+  - var name = 'order';
+  link(rel='stylesheet'
+  href='css/#{name}-bundle.min.css')
+  script(src='js/#{name}-bundle.min.js')
+
+block header
+  include header
+
+block content
+  script#form-tmpl(type='text/x-template')
+    form.pure-form
+      fieldset.profile-box
+        .pure-g
+          .pure-u-1-3.label-box
+            label 收货人
+          .pure-u-2-3.input-box
+            input(type='text', name='name', value='{{- profile.name }}')
+        .pure-g
+          .pure-u-1-3.label-box
+            label 短号
+          .pure-u-2-3.input-box
+            input(type='text', name='shortTel', value='{{- profile.shortTel }}')
+        .pure-g
+          .pure-u-1-3.label-box
+            label 长号
+          .pure-u-2-3.input-box
+            input(type='text', name='tel', value='{{- profile.tel }}')
+        .pure-g
+          .pure-u-1-3.label-box
+            label 宿舍楼
+          .pure-u-2-3.input-box
+            input(type='text', name='block', value='{{- profile.block }}')
+        .pure-g
+          .pure-u-1-3.label-box
+            label 宿舍号
+          .pure-u-2-3.input-box
+            input(type='text', name='flat', value='{{- profile.flat }}')
+      .pure-g.pay-box
+        .pure-u-1
+          span.trailing 付款方式:
+          span.way 货到付款
+        .pure-u-1
+          .cost-box.pull-right
+            span.trailing 合计:
+            span.price ￥{{- cost.toFixed(1) }}
+      fieldset.pure-skin-pink.submit-box
+        input(type='text', name='message', placeholder='给GreatMe留言')
+        button.pure-button.pure-button-primary.submit-btn(onclick='submitOrder();return false') 提交订单
+  #form-div

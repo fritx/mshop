@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "dependencies": {
+    "fontawesome": "~4.0.3",
+    "pure": "~0.4.2",
+    "underscore": "~1.6.0",
+    "async": "~0.2.10",
+    "zeptojs": "~1.1.3",
+    "store.js": "~1.3.16",
+    "alertify.js": "~0.3.11",
+    "jquery.lazyload": "~1.9.3"
+  }
+}

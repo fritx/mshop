@@ -1,0 +1,38 @@
+#sort-box {
+  padding: 15px 0 0;
+  margin: 0 0 15px;
+  .sort-key {
+    font-size: 120% !important;
+    margin-right: 4px;
+    i {
+      margin: 0 -10px 0 10px;
+    }
+  }
+}
+
+#items-list {
+  .item-li {
+    margin: 0 0 10px;
+    &:nth-child(odd) > .item-box {
+      padding: 0 5px 0 0;
+    }
+    &:nth-child(even) > .item-box {
+      padding: 0 0 0 5px;
+    }
+    a.item-box {
+      display: block;
+      text-decoration: none;
+      .item {
+        > div {
+          margin-bottom: 6px;
+        }
+        .desc-box {
+          padding: 0 4px;
+        }
+        .desc-box .price {
+          font-size: 120%;
+        }
+      }
+    }
+  }
+}

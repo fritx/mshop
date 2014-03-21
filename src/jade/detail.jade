@@ -1,0 +1,51 @@
+extends layout
+
+block head
+  - var name = 'detail';
+  link(rel='stylesheet'
+  href='css/#{name}-bundle.min.css')
+  script(src='js/#{name}-bundle.min.js')
+
+block header
+  include header
+
+block content
+  script#item-tmpl(type='text/x-template')
+    .img-box
+      img.lazy(data-original='{{- imageLarge }}')
+    .desc-box
+      h3.title {{- title }}
+      .pure-g
+        .pure-u-1-2
+          .line
+            span.label 销　量
+            span.sales {{- sales }}件
+          .line
+            span.label 超市价
+            span ￥{{- marketPrice.toFixed(1) }}
+        .pure-u-1-2
+          | {{ if (promotingPrice && promotingPrice < ourPrice) { }}
+          .line
+            span.label 特　价
+            span.price ￥{{- promotingPrice.toFixed(1) }}
+          | {{ } }}
+          .line
+            span.label 闺蜜价
+            span.price ￥{{- ourPrice.toFixed(1) }}
+    form.pure-form.purchase-form
+      .line
+        label.label(for='num') 数量
+        a.pure-button.delta-btn(onclick='deltaNum(-1)')
+          i.fa.fa-minus
+        input#num(type='text', value='1')
+        a.pure-button.delta-btn(onclick='deltaNum(1)')
+          i.fa.fa-plus
+      .pure-g.pure-skin-pink.buttons
+        .pure-u-1-2
+          a.pure-button.pull-left(onclick='gotoCart()') 立即购买
+        .pure-u-1-2
+          a.pure-button.pure-button-primary.pull-right(onclick='addToCart()') 加入购物车
+    .detail-box
+      // use html
+      p {{= description }}
+  #item-div
