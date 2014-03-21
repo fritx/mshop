@@ -1,6 +1,6 @@
 {
   "name": "mshop",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "An online shop adapted to mobile.",
   "devDependencies": {
     "grunt": "~0.4.2",
@@ -13,9 +13,9 @@
     "grunt-contrib-jade": "^0.11.0"
   },
   "scripts": {
-    "setup": "node spawn grunt",
-    "install": "npm run setup",
-    "start": "node spawn http-server"
+    "start": "http-server",
+    "setup": "grunt",
+    "install": "npm run setup"
   },
   "repository": {
     "type": "git",
