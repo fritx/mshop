@@ -19,8 +19,10 @@ block content
     li.pure-u-1-2.item-li
       a.item-box(href='detail.html?id={{- id }}')
         .item
+          //- img-box square 1:1
           .img-box
-            img.lazy(data-original='{{- image }}')
+            .img-inner
+              img.lazy(data-original='{{- image }}')
           .desc-box
             .title {{- title }}
             .price ￥{{- _price.toFixed(1) }}

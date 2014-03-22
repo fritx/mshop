@@ -50,6 +50,7 @@ block content
   script#hero-tmpl(type='text/x-template')
     li.hero-li
       | <a{{= url ? ' href="' + url + '"': ' class="default"' }}>
+      //- hero min-height 100px
       img.lazy(data-original='{{= src }}')
       | </a>
   ul#heros-list

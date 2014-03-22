@@ -26,6 +26,21 @@
         > div {
           margin-bottom: 6px;
         }
+        .img-box {
+          position: relative;
+          &:before {
+            content: "";
+            display: block;
+            padding-top: 100%;  /* img-box square 1:1 */
+          }
+          .img-inner {
+            position:  absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+          }
+        }
         .desc-box {
           padding: 0 4px;
         }
