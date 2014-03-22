@@ -28,6 +28,7 @@ node_modules
 bower_components
 .DS_Store
 *~
+*.out
 tmp
 /src/jade/*.html
 /src/less/*.css
