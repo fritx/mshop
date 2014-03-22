@@ -12,12 +12,15 @@ block header
     img(src='content/images/shop/banner-2.jpg')
 
 block content
-  #search.pure-g.pure-skin-pink
-    .pure-u-4-5.input-box
-      input(type='text')
-    .pure-u-1-5.btn-box
-      a.pure-button(onclick='doSearch()')
-        i.fa.fa-search
+  //- search box hidden
+  //-
+    #search.pure-g.pure-skin-pink
+      .pure-u-4-5.input-box
+        input(type='text')
+      .pure-u-1-5.btn-box
+        a.pure-button(onclick='doSearch()')
+          i.fa.fa-search
+
   #nav
     .pure-g
       .pure-u-1-4
