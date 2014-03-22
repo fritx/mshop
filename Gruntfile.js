@@ -60,7 +60,10 @@ module.exports = function (grunt) {
         csslintrc: '.csslintrc'
       },
       css: {
-        src: ['tmp/css/**/*.css']
+        src: [
+          'tmp/css/**/*.css',
+          '!tmp/css/**/global.*'
+        ]
       }
     },
 

@@ -1,10 +1,11 @@
 extends layout
 
 block head
-  - var name = 'items';
   link(rel='stylesheet'
-  href='css/#{name}-bundle.min.css')
-  script(src='js/#{name}-bundle.min.js')
+  href='css/items-bundle.min.css')
+
+block tail
+  script(src='js/items-bundle.min.js')
 
 block header
   include header
