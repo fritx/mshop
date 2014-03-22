@@ -31,13 +31,13 @@ function loadReady() {
   _.delay(function () {
     $('.back-btn i').toggleClass('fa-spinner fa-spin fa-angle-left');
   }, 300);
-  // lazy load
-  $('.lazy img, img.lazy')
-    .attr('src', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC')
-    .lazyload({
-      threshold: 100,
-      effect: 'fadeIn'
-    });
+  // jquery lazyload
+  // no placeholder due to zepto
+  // and i don't want it due to the forced ratio
+  $('.lazy img, img.lazy').lazyload({
+    threshold: 100,
+    effect: 'fadeIn'
+  });
 }
 
 function toggleFooter(show) {
