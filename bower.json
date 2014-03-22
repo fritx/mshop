@@ -1,4 +1,5 @@
 {
+  "name": "mshop",
   "private": true,
   "dependencies": {
     "fontawesome": "~4.0.3",
