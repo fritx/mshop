@@ -1,8 +1,0 @@
-.idea
-node_modules
-bower_components
-.DS_Store
-*~
-tmp
-/src/jade/*.html
-/src/less/*.css

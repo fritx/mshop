@@ -1,29 +1,36 @@
 body {
   color: #575757;
 }
+
 .hidden {
   display: none;
 }
+
 .trailing:after {
   content: " ";
 }
+
 .pull-center {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
+
 a, button {
   cursor: pointer;
 }
+
 .default {
   cursor: default !important;
 }
+
 ul, ol {
   list-style: none;
   margin: 0;
   padding: 0;
   display: block;
 }
+
 img {
   display: block;
   width: 100%;
@@ -31,9 +38,10 @@ img {
   height: auto;
 }
 
-p.alertify-message {
+.alertify-message {
   font-size: 130%;
 }
+
 .price {
   color: #FF0E30;
 }
@@ -46,7 +54,6 @@ p.alertify-message {
   z-index: 999;
   .header-box {
     display: block;
-    vertical-align: middle;
     color: white;
     padding: 9px 0 5px;
     text-align: center;
@@ -78,8 +85,10 @@ p.alertify-message {
   z-index: 999;
   bottom: 0;
   width: 100%;
-  [class|="pure-u"] {
-    float: left;
+  .pure-g {
+    > div {
+      float: left;
+    }
   }
   .footer-box {
     display: block;

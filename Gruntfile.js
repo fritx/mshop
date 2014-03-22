@@ -21,6 +21,17 @@ module.exports = function (grunt) {
       }
     },
 
+    jsonlint: {
+      json: {
+        src: [
+          'package.json',
+          '.jshintrc',
+          '.csslintrc',
+          'content/data/**/*.json'
+        ]
+      }
+    },
+
     copy: {
       css: {
         expand: true,
@@ -32,24 +43,37 @@ module.exports = function (grunt) {
 
     less: {
       css: {
-        options: {
-          compress: true
-        },
         files: {
-          'tmp/css/main.min.css': 'src/less/main.less',
-          'tmp/css/home.min.css': 'src/less/home.less',
-          'tmp/css/items.min.css': 'src/less/items.less',
-          'tmp/css/detail.min.css': 'src/less/detail.less',
-          'tmp/css/cart.min.css': 'src/less/cart.less',
-          'tmp/css/order.min.css': 'src/less/order.less',
-          'tmp/css/orders.min.css': 'src/less/orders.less'
+          'tmp/css/main.css': 'src/less/main.less',
+          'tmp/css/home.css': 'src/less/home.less',
+          'tmp/css/items.css': 'src/less/items.less',
+          'tmp/css/detail.css': 'src/less/detail.less',
+          'tmp/css/cart.css': 'src/less/cart.less',
+          'tmp/css/order.css': 'src/less/order.less',
+          'tmp/css/orders.css': 'src/less/orders.less'
         }
+      }
+    },
+
+    csslint: {
+      options: {
+        csslintrc: '.csslintrc'
+      },
+      css: {
+        src: ['tmp/css/**/*.css']
       }
     },
 
     cssmin: {
       css: {
         files: {
+          'tmp/css/main.min.css': 'tmp/css/main.css',
+          'tmp/css/home.min.css': 'tmp/css/home.css',
+          'tmp/css/items.min.css': 'tmp/css/items.css',
+          'tmp/css/detail.min.css': 'tmp/css/detail.css',
+          'tmp/css/cart.min.css': 'tmp/css/cart.css',
+          'tmp/css/order.min.css': 'tmp/css/order.css',
+          'tmp/css/orders.min.css': 'tmp/css/orders.css',
           'tmp/css/global.min.css': [
             'bower_components/fontawesome/css/font-awesome.min.css',
             'bower_components/pure/pure-min.css',
@@ -64,7 +88,7 @@ module.exports = function (grunt) {
 
     jshint: {
       options: {
-        jshintrc: true
+        jshintrc: '.jshintrc'
       },
       gruntfile: {
         src: 'Gruntfile.js'
@@ -184,25 +208,39 @@ module.exports = function (grunt) {
   grunt.registerTask('clear', [
     'clean:tmp'
   ]);
-  grunt.registerTask('check', [
+
+  grunt.registerTask('check-css', [
+    'less', 'csslint', 'clear'
+  ]);
+  grunt.registerTask('check-json', [
+    'jsonlint'
+  ]);
+  grunt.registerTask('check-js', [
     'jshint'
   ]);
-  grunt.registerTask('css', [
+  grunt.registerTask('check', [
+    'check-json', 'check-css', 'check-js'
+  ]);
+
+  grunt.registerTask('build-css', [
     'copy:css',
     'less', 'cssmin',
     'concat:css'
   ]);
-  grunt.registerTask('js', [
-    'jshint',
+  grunt.registerTask('build-js', [
     'uglify',
     'concat:js'
   ]);
-  grunt.registerTask('html', [
+  grunt.registerTask('build-html', [
     'jade'
   ]);
+  grunt.registerTask('build', [
+    'build-css', 'build-js', 'build-html'
+  ]);
+
   grunt.registerTask('default', [
     'dump',
-    'css', 'js', 'html',
+    'check', 'build',
     'clear'
   ]);
 };
