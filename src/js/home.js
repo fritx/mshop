@@ -33,7 +33,9 @@ function showBrands() {
 
 function doSearch() {
   var keyword = $('#search input').val();
-  if (!keyword) return;
+  if (!keyword) {
+    return;
+  }
   location.href = 'items.html' + paramsToSearch({
     keyword: keyword
   });

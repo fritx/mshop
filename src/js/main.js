@@ -5,8 +5,10 @@ function searchToParams(search) {
   var pat = /([^?=&#]*)=([^?=&#]+)/g, params = {};
   decodeURIComponent(search)
     .replace(pat, function (a, b, c) {
-      if (b in params) {  // 已有该键
-        if (!_.isArray(params[b])) params[b] = [params[b]]; // 数组化
+      if (b in params) {
+        if (!_.isArray(params[b])) {
+          params[b] = [params[b]];
+        }
         params[b].push(c);
       } else {
         params[b] = c;
@@ -48,7 +50,7 @@ function makeFooterToggle() {
   var H = $window.height();
   $window.on('resize', _.throttle(function () {
     var h = $window.height();
-    if (h < .7 * H) {
+    if (h < 0.7 * H) {
       toggleFooter(false);
     } else {
       toggleFooter(true);

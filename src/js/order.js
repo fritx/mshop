@@ -52,12 +52,14 @@ function submitOrder() {
     message: $('[name="message"]').val()
   };
   if (_.some(['name', 'tel', 'block', 'flat'], function (key) {
-    return profile[key] == '';
+    return profile[key] === '';
   })) {
     return notify('订单填写不完整');
   }
   ask('确定提交订单?', function (ok) {
-    if (!ok) return;
+    if (!ok) {
+      return;
+    }
     $('.submit-btn').attr('disabled', true);
     saveOrder(oItems, profile, extra, function () {
       emptyCurrOrder(function () {

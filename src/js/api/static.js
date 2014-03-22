@@ -24,10 +24,10 @@ function fetchProductsList(opt, cb) {
     if (keyword != null) {
       keyword = keyword.replace(seperator, '');
       items = _.filter(items, function (item) {
-        return ~item.brand.indexOf(keyword)
-          || ~item.tags.join(seperator).indexOf(keyword)
-          || ~item.title.indexOf(keyword)
-          || ~item.description.indexOf(keyword);
+        return ~item.brand.indexOf(keyword) ||
+          ~item.tags.join(seperator).indexOf(keyword) ||
+          ~item.title.indexOf(keyword) ||
+          ~item.description.indexOf(keyword);
       });
     }
     _.each(items, function (item) {
@@ -36,7 +36,8 @@ function fetchProductsList(opt, cb) {
     // sort items
     if (orderKey != null) {
       var field = ({
-        'sales': 'sales', 'price': '_price'
+        'sales': 'sales',
+        'price': '_price'
       })[orderKey];
       items = _.sortBy(items, function (item) {
         return orderVal * item[field];
@@ -59,7 +60,9 @@ function fetchCart(cb) {
   fetchProductsList(null, function (dItems) {
     var xItems = _.map(cItems, function (cItem) {
       var dItem = _.findWhere(dItems, { id: cItem.id });
-      if (!dItem) return null;
+      if (!dItem) {
+        return null;
+      }
       var xItem = _.extend(cItem, {
         title: dItem.title,
         image: dItem.image,
@@ -75,7 +78,9 @@ function fetchCurrOrder(cb) {
   fetchProductsList(null, function (dItems) {
     var xItems = _.map(oItems, function (cItem) {
       var dItem = _.findWhere(dItems, { id: cItem.id });
-      if (!dItem) return null;
+      if (!dItem) {
+        return null;
+      }
       var xItem = _.extend(cItem, {
         _price: dItem._price
       });

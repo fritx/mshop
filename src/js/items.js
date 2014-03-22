@@ -67,9 +67,11 @@ $(function () {
 
   /* load items */
   fetchProductsList({
-    brand: brand, tags: tags,
+    brand: brand,
+    tags: tags,
     keyword: keyword,
-    orderVal: orderVal, orderKey: orderKey
+    orderVal: orderVal,
+    orderKey: orderKey
   }, function (items) {
     if (items.length <= 0) {
       return notify('暂时没有此类商品', true);

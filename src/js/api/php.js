@@ -17,8 +17,7 @@ function fetchProductsList(opt, cb) {
   o.way = ({
     'sales': 'sales',
     'price': 'low_price'
-  })[orderKey] + '_'
-    + ({
+  })[orderKey] + '_' + ({
     '-1': 'DESC',
     '1': 'ASC'
   })[orderVal];
@@ -134,7 +133,9 @@ function saveOrder(oItems, profile, extra, cb) {
   });
 }
 function parseItem(dItem) {
-  if (!dItem) return null;
+  if (!dItem) {
+    return null;
+  }
   var item = {
     id: +dItem.id,
     title: dItem.title,

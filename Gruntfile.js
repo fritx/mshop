@@ -62,6 +62,18 @@ module.exports = function (grunt) {
       }
     },
 
+    jshint: {
+      options: {
+        jshintrc: true
+      },
+      gruntfile: {
+        src: 'Gruntfile.js'
+      },
+      js: {
+        src: 'src/js/**/*.js'
+      }
+    },
+
     uglify: {
       js: {
         files: {
@@ -81,7 +93,7 @@ module.exports = function (grunt) {
             'bower_components/alertify.js/lib/alertify.min.js',
             'src/js/as-jquery.js',
             'bower_components/jquery.lazyload/jquery.lazyload.min.js',
-            'src/js/api/'+ apiType +'.js',
+            'src/js/api/' + apiType + '.js',
             'src/js/main.js'
           ],
           'tmp/js/home.min.js': 'src/js/home.js',
@@ -164,13 +176,7 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-jade');
+  require('load-grunt-tasks')(grunt);
 
   grunt.registerTask('dump', [
     'clean'
@@ -178,12 +184,16 @@ module.exports = function (grunt) {
   grunt.registerTask('clear', [
     'clean:tmp'
   ]);
+  grunt.registerTask('check', [
+    'jshint'
+  ]);
   grunt.registerTask('css', [
     'copy:css',
     'less', 'cssmin',
     'concat:css'
   ]);
   grunt.registerTask('js', [
+    'jshint',
     'uglify',
     'concat:js'
   ]);

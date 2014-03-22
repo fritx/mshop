@@ -1,6 +1,6 @@
 {
   "name": "mshop",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "An online shop adapted to mobile.",
   "devDependencies": {
     "grunt": "~0.4.2",
@@ -10,12 +10,12 @@
     "grunt-contrib-cssmin": "~0.9.0",
     "grunt-contrib-uglify": "~0.4.0",
     "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-jade": "^0.11.0"
+    "grunt-contrib-jade": "^0.11.0",
+    "load-grunt-tasks": "^0.4.0"
   },
   "scripts": {
-    "start": "http-server",
-    "setup": "grunt",
-    "install": "npm run setup"
+    "test": "grunt test",
+    "start": "http-server"
   },
   "repository": {
     "type": "git",
@@ -31,5 +31,8 @@
   "bugs": {
     "url": "https://github.com/weixinjs/mshop/issues"
   },
-  "homepage": "https://github.com/weixinjs/mshop"
+  "homepage": "https://github.com/weixinjs/mshop",
+  "dependencies": {
+    "grunt-contrib-jshint": "^0.9.2"
+  }
 }

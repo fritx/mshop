@@ -1,0 +1,18 @@
+{
+  "boss": true,
+  "curly": true,
+  "evil": true,
+  "funcscope": true,
+  "immed": true,
+  "eqnull": true,
+  "noarg": true,
+  "quotmark": "single",
+  "smarttabs": true,
+  "trailing": true,
+  //"undef": true,
+  //"unused": true,
+  "indent": 2,
+  "newcap": true,
+  "freeze": true,
+  "browser": true
+}
