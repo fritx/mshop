@@ -88,7 +88,7 @@ var xItems;
 
 $(function () {
   /* title */
-  setTitle('购物车 - GreatMe', '购物车');
+  setTitle('购物车 - Great Me', '购物车');
 
   /* active */
   $('#footer').find('.fa-shopping-cart').closest('a')

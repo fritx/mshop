@@ -63,7 +63,7 @@ $(function () {
   var title = _.compact(
     [].concat(brand, tags)
   ).join('+') || shortTitle;
-  setTitle(title + ' - GreatMe', shortTitle);
+  setTitle(title + ' - Great Me', shortTitle);
 
   /* load items */
   fetchProductsList({

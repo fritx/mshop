@@ -1,15 +1,8 @@
 extends layout
 
-block head
-  link(rel='stylesheet'
-  href='css/home-bundle.min.css')
-
-block tail
-  script(src='js/home-bundle.min.js')
-
 block header
   #banner
-    img(src='content/images/shop/banner-2.jpg')
+    img.lazy(alt='GreatMe', src=transparent, data-original='content/images/shop/banner-2.jpg')
 
 block content
   //- search box hidden

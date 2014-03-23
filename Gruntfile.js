@@ -2,8 +2,9 @@
  * Created by fritz on 3/7/14.
  */
 
+var path = require('path');
+
 module.exports = function (grunt) {
-  require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
     apiType: grunt.option('api') || 'static',
@@ -29,14 +30,6 @@ module.exports = function (grunt) {
       }
     },
 
-    copy: {
-      css: {
-        expand: true,
-        cwd: 'bower_components/fontawesome/fonts',
-        src: '**',
-        dest: 'dist/fonts'
-      }
-    },
     less: {
       css: {
         files: {
@@ -61,7 +54,6 @@ module.exports = function (grunt) {
         ]
       }
     },
-
     cssmin: {
       css: {
         files: {
@@ -125,7 +117,7 @@ module.exports = function (grunt) {
     },
 
     concat: {
-      'css': {
+      css: {
         options: {
           separator: '\n'
         },
@@ -150,7 +142,7 @@ module.exports = function (grunt) {
           ]
         }
       },
-      'js': {
+      js: {
         options: {
           separator: '\n;'
         },
@@ -179,6 +171,17 @@ module.exports = function (grunt) {
 
     jade: {
       options: {
+        data: function (dest, src) {
+          var name = path.basename(src, '.jade');
+          return {
+            title: 'Great Me',
+            name: name,
+            keywords: ['Great Me', '闺蜜', '女生', 'M巾', '卫生巾', '五邑大学', '袂卓'],
+            description: 'Great Me, 全网首家M巾专营店, 校园送货上门, 让你轻松做女人',
+            transparent: 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='
+            //transparent: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+          };
+        },
         pretty: true
       },
       html: {
@@ -192,9 +195,13 @@ module.exports = function (grunt) {
         }
       }
     },
+    htmllint: {
+      html: 'tmp/html/**/*.html'
+    },
     htmlmin: {
       html: {
         options: {
+          minifyJS: true,
           removeComments: true,
           collapseWhitespace: true
         },
@@ -209,26 +216,36 @@ module.exports = function (grunt) {
       }
     },
 
+    copy: {
+      css: {
+        expand: true,
+        cwd: 'bower_components/fontawesome/fonts',
+        src: '**',
+        dest: 'dist/fonts'
+      }
+    },
+
     open: {
       wait: {
         options: {
-          openOn: 'serverListen'
+          openOn: 'server-listen'
         },
         url: 'http://127.0.0.1:<%= serverPort %>/'
       }
     }
   });
 
-  grunt.registerTask('dump', ['clean']);
-  grunt.registerTask('clear', ['clean:tmp']);
+  require('load-grunt-tasks')(grunt);
 
+  grunt.registerTask('clear', ['clean:tmp']);
   grunt.registerTask('check', [
-    'dump', 'jsonlint', 'less', 'csslint', 'jshint'
+    'clean', 'jsonlint',
+    'less', 'csslint', 'jshint',
+    'jade', 'htmllint'
   ]);
 
   grunt.registerTask('build', [
-    'dump',
-    'copy:css', 'less', 'cssmin', 'concat:css',
+    'clean', 'copy:css', 'less', 'cssmin', 'concat:css',
     'uglify', 'concat:js',
     'jade', 'htmlmin'
   ]);
@@ -240,14 +257,15 @@ module.exports = function (grunt) {
       if (err) {
         return grunt.fail.warn(err);
       }
-      grunt.event.emit('serverListen');
+      grunt.event.emit('server-listen');
     });
   });
   grunt.registerTask('start', [
-    'open', 'server'
+    'open:wait', 'server'
   ]);
 
   grunt.registerTask('default', [
-    'dump', 'check', 'build', 'clear'
+    'build', 'clear', 'start'
   ]);
+
 };

@@ -45,7 +45,7 @@ var brands, brandsOn = false;
 
 $(function () {
   /* title */
-  setTitle('GreatMe');
+  setTitle('Great Me');
 
   /* active */
   $('#footer').find('.fa-home').closest('a')

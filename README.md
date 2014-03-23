@@ -10,7 +10,7 @@ An online shop adapted to mobile.
 
 ## TODO
 
-- GZip Compressing?
 - PhantomJS Test?
 - Better Jade Templating
-- App restructure
+- App Restructure
+- Hold the Server Process

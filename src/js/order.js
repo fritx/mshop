@@ -74,7 +74,7 @@ var oItems;
 
 $(function () {
   /* title */
-  setTitle('确认下单 - GreatMe', '确认下单');
+  setTitle('确认下单 - Great Me', '确认下单');
 
   /* load order */
   fetchCurrOrder(function (_oItems) {
