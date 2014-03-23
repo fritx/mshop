@@ -3,21 +3,18 @@
  */
 
 module.exports = function (grunt) {
-  var apiType = grunt.option('api') || 'static';
+  require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
+    apiType: grunt.option('api') || 'static',
+    serverPort: grunt.option('port') || 8077,
+
     clean: {
       tmp: {
         src: 'tmp'
       },
-      css: {
-        src: ['fonts', 'css']
-      },
-      js: {
-        src: 'js'
-      },
-      html: {
-        src: '*.html'
+      dist: {
+        src: 'dist'
       }
     },
 
@@ -37,10 +34,9 @@ module.exports = function (grunt) {
         expand: true,
         cwd: 'bower_components/fontawesome/fonts',
         src: '**',
-        dest: 'fonts'
+        dest: 'dist/fonts'
       }
     },
-
     less: {
       css: {
         files: {
@@ -54,7 +50,6 @@ module.exports = function (grunt) {
         }
       }
     },
-
     csslint: {
       options: {
         csslintrc: '.csslintrc'
@@ -93,14 +88,10 @@ module.exports = function (grunt) {
       options: {
         jshintrc: '.jshintrc'
       },
-      gruntfile: {
-        src: 'Gruntfile.js'
-      },
       js: {
-        src: 'src/js/**/*.js'
+        src: ['Gruntfile.js', 'src/js/**/*.js']
       }
     },
-
     uglify: {
       js: {
         files: {
@@ -120,7 +111,7 @@ module.exports = function (grunt) {
             'bower_components/alertify.js/lib/alertify.min.js',
             'src/js/as-jquery.js',
             'bower_components/jquery.lazyload/jquery.lazyload.min.js',
-            'src/js/api/' + apiType + '.js',
+            'src/js/api/<%= apiType %>.js',
             'src/js/main.js'
           ],
           'tmp/js/home.min.js': 'src/js/home.js',
@@ -139,22 +130,22 @@ module.exports = function (grunt) {
           separator: '\n'
         },
         files: {
-          'css/home-bundle.min.css': [
+          'dist/css/home-bundle.min.css': [
             'tmp/css/global.min.css', 'tmp/css/home.min.css'
           ],
-          'css/items-bundle.min.css': [
+          'dist/css/items-bundle.min.css': [
             'tmp/css/global.min.css', 'tmp/css/items.min.css'
           ],
-          'css/detail-bundle.min.css': [
+          'dist/css/detail-bundle.min.css': [
             'tmp/css/global.min.css', 'tmp/css/detail.min.css'
           ],
-          'css/cart-bundle.min.css': [
+          'dist/css/cart-bundle.min.css': [
             'tmp/css/global.min.css', 'tmp/css/cart.min.css'
           ],
-          'css/order-bundle.min.css': [
+          'dist/css/order-bundle.min.css': [
             'tmp/css/global.min.css', 'tmp/css/order.min.css'
           ],
-          'css/orders-bundle.min.css': [
+          'dist/css/orders-bundle.min.css': [
             'tmp/css/global.min.css', 'tmp/css/orders.min.css'
           ]
         }
@@ -164,22 +155,22 @@ module.exports = function (grunt) {
           separator: '\n;'
         },
         files: {
-          'js/home-bundle.min.js': [
+          'dist/js/home-bundle.min.js': [
             'tmp/js/global.min.js', 'tmp/js/home.min.js'
           ],
-          'js/items-bundle.min.js': [
+          'dist/js/items-bundle.min.js': [
             'tmp/js/global.min.js', 'tmp/js/items.min.js'
           ],
-          'js/detail-bundle.min.js': [
+          'dist/js/detail-bundle.min.js': [
             'tmp/js/global.min.js', 'tmp/js/detail.min.js'
           ],
-          'js/cart-bundle.min.js': [
+          'dist/js/cart-bundle.min.js': [
             'tmp/js/global.min.js', 'tmp/js/cart.min.js'
           ],
-          'js/order-bundle.min.js': [
+          'dist/js/order-bundle.min.js': [
             'tmp/js/global.min.js', 'tmp/js/order.min.js'
           ],
-          'js/orders-bundle.min.js': [
+          'dist/js/orders-bundle.min.js': [
             'tmp/js/global.min.js', 'tmp/js/orders.min.js'
           ]
         }
@@ -192,58 +183,71 @@ module.exports = function (grunt) {
       },
       html: {
         files: {
-          'index.html': 'src/jade/home.jade',
-          'items.html': 'src/jade/items.jade',
-          'detail.html': 'src/jade/detail.jade',
-          'cart.html': 'src/jade/cart.jade',
-          'order.html': 'src/jade/order.jade',
-          'orders.html': 'src/jade/orders.jade'
+          'tmp/html/index.html': 'src/jade/home.jade',
+          'tmp/html/items.html': 'src/jade/items.jade',
+          'tmp/html/detail.html': 'src/jade/detail.jade',
+          'tmp/html/cart.html': 'src/jade/cart.jade',
+          'tmp/html/order.html': 'src/jade/order.jade',
+          'tmp/html/orders.html': 'src/jade/orders.jade'
         }
+      }
+    },
+    htmlmin: {
+      html: {
+        options: {
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: {
+          'dist/index.html': 'tmp/html/index.html',
+          'dist/items.html': 'tmp/html/items.html',
+          'dist/detail.html': 'tmp/html/detail.html',
+          'dist/cart.html': 'tmp/html/cart.html',
+          'dist/order.html': 'tmp/html/order.html',
+          'dist/orders.html': 'tmp/html/orders.html'
+        }
+      }
+    },
+
+    open: {
+      wait: {
+        options: {
+          openOn: 'serverListen'
+        },
+        url: 'http://127.0.0.1:<%= serverPort %>/'
       }
     }
   });
 
-  require('load-grunt-tasks')(grunt);
+  grunt.registerTask('dump', ['clean']);
+  grunt.registerTask('clear', ['clean:tmp']);
 
-  grunt.registerTask('dump', [
-    'clean'
-  ]);
-  grunt.registerTask('clear', [
-    'clean:tmp'
-  ]);
-
-  grunt.registerTask('check-css', [
-    'less', 'csslint', 'clear'
-  ]);
-  grunt.registerTask('check-json', [
-    'jsonlint'
-  ]);
-  grunt.registerTask('check-js', [
-    'jshint'
-  ]);
   grunt.registerTask('check', [
-    'check-json', 'check-css', 'check-js'
+    'dump', 'jsonlint', 'less', 'csslint', 'jshint'
   ]);
 
-  grunt.registerTask('build-css', [
-    'copy:css',
-    'less', 'cssmin',
-    'concat:css'
-  ]);
-  grunt.registerTask('build-js', [
-    'uglify',
-    'concat:js'
-  ]);
-  grunt.registerTask('build-html', [
-    'jade'
-  ]);
   grunt.registerTask('build', [
-    'build-css', 'build-js', 'build-html'
+    'dump',
+    'copy:css', 'less', 'cssmin', 'concat:css',
+    'uglify', 'concat:js',
+    'jade', 'htmlmin'
+  ]);
+
+  grunt.registerTask('server', function () {
+    this.async();
+    var app = require('./app');
+    app.listen(grunt.config.data.serverPort, function (err) {
+      if (err) {
+        return grunt.fail.warn(err);
+      }
+      grunt.event.emit('serverListen');
+    });
+  });
+  grunt.registerTask('start', [
+    'open', 'server'
   ]);
 
   grunt.registerTask('default', [
-    'dump',
-    'check', 'build',
-    'clear'
+    'dump', 'check', 'build', 'clear'
   ]);
 };

@@ -2,7 +2,15 @@
 
 An online shop adapted to mobile.
 
-## Fetures
+## Features
 
-- PureCSS as Web Design
-- JS-Driven Static Management
+- Also as a Real Product: <http://greatme.org/>
+- PureCSS like Web Designing
+- JS-Driven Static Data-Reading
+
+## TODO
+
+- GZip Compressing?
+- PhantomJS Test?
+- Better Jade Templating
+- App restructure

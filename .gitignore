@@ -30,5 +30,6 @@ bower_components
 *~
 *.out
 tmp
+/dist
 /src/jade/*.html
 /src/less/*.css
