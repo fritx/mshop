@@ -195,9 +195,6 @@ module.exports = function (grunt) {
         }
       }
     },
-    htmllint: {
-      html: 'tmp/html/**/*.html'
-    },
     htmlmin: {
       html: {
         options: {
@@ -240,14 +237,12 @@ module.exports = function (grunt) {
   grunt.registerTask('clear', ['clean:tmp']);
   grunt.registerTask('check', [
     'clean', 'jsonlint',
-    'less', 'csslint', 'jshint',
-    'jade', 'htmllint'
+    'less', 'csslint', 'jshint'
   ]);
 
   grunt.registerTask('build', [
     'clean', 'copy:css', 'less', 'cssmin', 'concat:css',
-    'uglify', 'concat:js',
-    'jade', 'htmlmin'
+    'uglify', 'concat:js', 'jade', 'htmlmin'
   ]);
 
   grunt.registerTask('server', function () {

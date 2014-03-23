@@ -11,6 +11,7 @@ An online shop adapted to mobile.
 ## TODO
 
 - PhantomJS Test?
-- Better Jade Templating
+- Client Jade Templating
 - App Restructure
 - Hold the Server Process
+- Deal with IMG Alt

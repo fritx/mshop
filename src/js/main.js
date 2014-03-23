@@ -29,13 +29,13 @@ function paramsToSearch(params) {
 
 function loadReady() {
   _.delay(function () {
-    $('.back-btn i').toggleClass('fa-spinner fa-spin fa-angle-left');
+    $('.back-btn').find('i').toggleClass('fa-spinner fa-spin fa-angle-left');
   }, 300);
   // jquery lazyload
   // no placeholder due to zepto
   // and i don't want it due to the forced ratio
-  $('.lazy img, img.lazy').lazyload({
-    threshold: 100,
+  $('img.lazy').lazyload({
+    threshold: 200,
     effect: 'fadeIn'
   });
 }

@@ -4,6 +4,9 @@ function fetchShop(cb) {
     cb({
       brands: shop.brands,
       tags: shop.tags,
+      banner: shop.banner || {
+        src: 'content/images/shop/banner-2.jpg'
+      },
       heros: shop.advs
     });
   });

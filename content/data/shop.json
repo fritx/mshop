@@ -1,13 +1,16 @@
 {
   "brands": ["苏菲", "朵朵", "七度空间"],
   "tags": ["日用", "夜用", "护垫"],
+  "banner": {
+    "src": "content/images/shop/banner-2.jpg"
+  },
   "heros": [
     {
-      "src": "content/images/shop/hero-0.jpg",
+      "src": "content/images/shop/hero-0.jpg"
       "url": null
     },
     {
-      "src": "content/images/shop/hero-1.jpg",
+      "src": "content/images/shop/hero-1.jpg"
       "url": "detail.html?id=3"
     }
   ]

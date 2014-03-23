@@ -24,7 +24,7 @@ function showBrands() {
     return notify('暂时没有品牌');
   }
   $('#brands-btn').toggleClass('active');
-  $('#brands-div').toggleClass('hidden');
+  $('#brands-div').toggleClass('none');
   brandsOn = !brandsOn;
   if (brandsOn) {
     location.href = '#brands-btn';
@@ -58,10 +58,13 @@ $(function () {
         name: brand
       };
     });
-    var heros = shop.heros;
+
+    /* set banner source */
+    $('#banner').find('img')
+      .attr('data-original', shop.banner.src);
 
     /* display heros */
-    listHeros(heros);
+    listHeros(shop.heros);
 
     /* display brands */
     listBrands();

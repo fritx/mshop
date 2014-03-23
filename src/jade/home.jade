@@ -2,11 +2,10 @@ extends layout
 
 block header
   #banner
-    img.lazy(alt='GreatMe', src=transparent, data-original='content/images/shop/banner-2.jpg')
+    img.lazy
 
 block content
-  //- search box hidden
-  //-
+  //- search box
     #search.pure-g.pure-skin-pink
       .pure-u-4-5.input-box
         input(type='text')
@@ -38,7 +37,7 @@ block content
     li.pure-u-1-2
       a(href='items.html?brand={{- name }}') {{- name }}
 
-  #brands-div.pure-skin-pink.hidden
+  #brands-div.pure-skin-pink.none
     .pure-menu.pure-menu-open.menu
       a.pure-menu-heading.title 品牌列表
       ul.pure-g.list
