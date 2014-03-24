@@ -3,11 +3,20 @@
  */
 
 var path = require('path');
+var _ = require('underscore');
 
 module.exports = function (grunt) {
   grunt.initConfig({
     apiType: grunt.option('api') || 'static',
     serverPort: grunt.option('port') || 8077,
+    metaData: {
+      title: 'Great Me',
+      keywords: [
+        'Great Me', '闺蜜', '女生', 'M巾', '卫生巾', '五邑大学', '袂卓'
+      ],
+      description: 'Great Me, 全网首家M巾专营店, 校园送货上门, 让你轻松做女人',
+      transparent: 'content/images/shop/transparent.gif'
+    },
 
     clean: {
       tmp: {
@@ -15,17 +24,6 @@ module.exports = function (grunt) {
       },
       dist: {
         src: 'dist'
-      }
-    },
-
-    jsonlint: {
-      json: {
-        src: [
-          'package.json',
-          '.jshintrc',
-          '.csslintrc',
-          'content/data/**/*.json'
-        ]
       }
     },
 
@@ -56,13 +54,13 @@ module.exports = function (grunt) {
     cssmin: {
       css: {
         files: {
-          'tmp/css/main.min.css': 'tmp/css/main.css',
           'tmp/css/home.min.css': 'tmp/css/home.css',
           'tmp/css/items.min.css': 'tmp/css/items.css',
           'tmp/css/detail.min.css': 'tmp/css/detail.css',
           'tmp/css/cart.min.css': 'tmp/css/cart.css',
           'tmp/css/order.min.css': 'tmp/css/order.css',
           'tmp/css/orders.min.css': 'tmp/css/orders.css',
+          'tmp/css/main.min.css': 'tmp/css/main.css',
           'tmp/css/global.min.css': [
             'bower_components/fontawesome/css/font-awesome.min.css',
             'bower_components/pure/pure-min.css',
@@ -76,11 +74,22 @@ module.exports = function (grunt) {
     },
 
     jshint: {
-      options: {
-        jshintrc: '.jshintrc'
+      json: {
+        src: [
+          'package.json',
+          '.jshintrc',
+          '.csslintrc',
+          'content/data/**/*.json'
+        ]
       },
       js: {
-        src: ['Gruntfile.js', 'src/js/**/*.js']
+        options: {
+          jshintrc: '.jshintrc'
+        },
+        src: [
+          'Gruntfile.js',
+          'src/js/**/*.js'
+        ]
       }
     },
     uglify: {
@@ -100,6 +109,7 @@ module.exports = function (grunt) {
             'bower_components/zeptojs/src/fx_methods.js',
             'bower_components/zeptojs/src/selector.js',
             'bower_components/alertify.js/lib/alertify.min.js',
+            // fake jquery for some dependencies
             'src/js/as-jquery.js',
             'bower_components/jquery.lazyload/jquery.lazyload.min.js',
             'src/js/api/<%= apiType %>.js',
@@ -171,14 +181,9 @@ module.exports = function (grunt) {
     jade: {
       options: {
         data: function (dest, src) {
-          var name = path.basename(src, '.jade');
-          return {
-            title: 'Great Me',
-            name: name,
-            keywords: ['Great Me', '闺蜜', '女生', 'M巾', '卫生巾', '五邑大学', '袂卓'],
-            description: 'Great Me, 全网首家M巾专营店, 校园送货上门, 让你轻松做女人',
-            transparent: 'content/images/shop/transparent.gif'
-          };
+          return _.extend({
+            name: path.basename(src, '.jade')
+          }, grunt.config('metaData'));
         },
         pretty: true
       },
@@ -227,6 +232,7 @@ module.exports = function (grunt) {
     open: {
       wait: {
         options: {
+          // listen on server task
           openOn: 'server-listen'
         },
         url: 'http://127.0.0.1:<%= serverPort %>/'
@@ -238,8 +244,8 @@ module.exports = function (grunt) {
 
   grunt.registerTask('clear', ['clean:tmp']);
   grunt.registerTask('check', [
-    'clean', 'jsonlint',
-    'less', 'csslint', 'jshint',
+    'clean', 'jshint:json',
+    'less', 'csslint', 'jshint:js',
     'jade', 'htmllint'
   ]);
 
@@ -255,6 +261,7 @@ module.exports = function (grunt) {
       if (err) {
         return grunt.fail.warn(err);
       }
+      // trigger for open task
       grunt.event.emit('server-listen');
     });
   });

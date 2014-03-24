@@ -24,10 +24,10 @@ function fetchProductsList(opt, cb) {
     if (keyword != null) {
       keyword = keyword.replace(seperator, '');
       items = _.filter(items, function (item) {
-        return ~item.brand.indexOf(keyword) ||
-          ~item.tags.join(seperator).indexOf(keyword) ||
-          ~item.title.indexOf(keyword) ||
-          ~item.description.indexOf(keyword);
+        return item.brand.indexOf(keyword) > -1 ||
+          item.tags.join(seperator).indexOf(keyword) > -1 ||
+          item.title.indexOf(keyword) > -1 ||
+          item.description.indexOf(keyword) > -1;
       });
     }
     _.each(items, function (item) {

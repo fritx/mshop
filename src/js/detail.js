@@ -25,8 +25,8 @@ function addToCart(silient, cb) {
    }*/
 
   var items = store.get('cartItems');
-  var itemIn;
-  if (itemIn = _.findWhere(items, { id: id })) {
+  var itemIn = _.findWhere(items, { id: id });
+  if (itemIn) {
     itemIn.num += num;
   } else {
     items.push({
