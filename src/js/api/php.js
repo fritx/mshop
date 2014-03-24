@@ -2,7 +2,7 @@ function fetchShop(cb) {
   $.get('../gettags.php', function (data) {
     var shop = JSON.parse(data);
     // TODO: php side has no banner yet
-    shop.banner = shop.banner || shop.banners[0] || {
+    shop.banner = shop.banner || (shop.banners && shop.banners[0]) || {
       alt: 'Great Me',
       src: 'content/images/shop/banner-2.jpg',
       url: null
