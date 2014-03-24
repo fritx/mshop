@@ -3,12 +3,16 @@ html(lang='zh-CN')
   head
     include meta
     title= title
-    link(rel='stylesheet', href='css/#{name}-bundle.min.css')
+    link(rel='stylesheet', href='css/_deps.css')
+    link(rel='stylesheet', href='css/_site.css')
+    link(rel='stylesheet', href='css/#{name}.css')
     block head
   body
     block header
     #content
       block content
     include footer
-    script(src='js/#{name}-bundle.min.js')
+    script(src='js/_deps.js')
+    script(src='js/_site.js')
+    script(src='js/#{name}.js')
     block tail

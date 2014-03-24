@@ -27,6 +27,15 @@ module.exports = function (grunt) {
       }
     },
 
+    copy: {
+      css: {
+        expand: true,
+        cwd: 'bower_components/fontawesome/fonts',
+        src: '**',
+        dest: 'dist/fonts'
+      }
+    },
+
     less: {
       css: {
         files: {
@@ -46,22 +55,16 @@ module.exports = function (grunt) {
       },
       css: {
         src: [
-          'tmp/css/**/*.css',
-          '!tmp/css/**/global.*'
+          'src/css/**/*.css',
+          '!src/css/pure-skin-pink.css',
+          'tmp/css/**/*.css'
         ]
       }
     },
     cssmin: {
       css: {
         files: {
-          'tmp/css/home.min.css': 'tmp/css/home.css',
-          'tmp/css/items.min.css': 'tmp/css/items.css',
-          'tmp/css/detail.min.css': 'tmp/css/detail.css',
-          'tmp/css/cart.min.css': 'tmp/css/cart.css',
-          'tmp/css/order.min.css': 'tmp/css/order.css',
-          'tmp/css/orders.min.css': 'tmp/css/orders.css',
-          'tmp/css/main.min.css': 'tmp/css/main.css',
-          'tmp/css/global.min.css': [
+          'dist/css/_deps.css': [
             'bower_components/fontawesome/css/font-awesome.min.css',
             'bower_components/pure/base-min.css',
             'bower_components/pure/buttons-min.css',
@@ -69,10 +72,18 @@ module.exports = function (grunt) {
             'bower_components/pure/grids-nr-min.css',
             'bower_components/pure/menus-nr-min.css',
             'bower_components/alertify.js/themes/alertify.core.css',
-            'bower_components/alertify.js/themes/alertify.default.css',
+            'bower_components/alertify.js/themes/alertify.default.css'
+          ],
+          'dist/css/_site.css': [
             'src/css/pure-skin-pink.css',
-            'tmp/css/main.min.css'
-          ]
+            'tmp/css/main.css'
+          ],
+          'dist/css/home.css': 'tmp/css/home.css',
+          'dist/css/items.css': 'tmp/css/items.css',
+          'dist/css/detail.css': 'tmp/css/detail.css',
+          'dist/css/cart.css': 'tmp/css/cart.css',
+          'dist/css/order.css': 'tmp/css/order.css',
+          'dist/css/orders.css': 'tmp/css/orders.css'
         }
       }
     },
@@ -99,7 +110,7 @@ module.exports = function (grunt) {
     uglify: {
       js: {
         files: {
-          'tmp/js/global.min.js': [
+          'dist/js/_deps.js': [
             'bower_components/underscore/underscore.js',
             'bower_components/async/lib/async.js',
             'bower_components/store.js/store.min.js',
@@ -108,76 +119,24 @@ module.exports = function (grunt) {
             'bower_components/zeptojs/src/ajax.js',
             'bower_components/zeptojs/src/form.js',
             'bower_components/zeptojs/src/ie.js',
-            'bower_components/zeptojs/src/detect.js',
             'bower_components/zeptojs/src/fx.js',
             'bower_components/zeptojs/src/fx_methods.js',
             'bower_components/zeptojs/src/selector.js',
             'bower_components/alertify.js/lib/alertify.min.js',
             // fake jquery for some dependencies
             'src/js/as-jquery.js',
-            'bower_components/jquery.lazyload/jquery.lazyload.min.js',
+            'bower_components/jquery.lazyload/jquery.lazyload.min.js'
+          ],
+          'dist/js/_site.js': [
             'src/js/api/<%= apiType %>.js',
             'src/js/main.js'
           ],
-          'tmp/js/home.min.js': 'src/js/home.js',
-          'tmp/js/items.min.js': 'src/js/items.js',
-          'tmp/js/detail.min.js': 'src/js/detail.js',
-          'tmp/js/cart.min.js': 'src/js/cart.js',
-          'tmp/js/order.min.js': 'src/js/order.js',
-          'tmp/js/orders.min.js': 'src/js/orders.js'
-        }
-      }
-    },
-
-    concat: {
-      css: {
-        options: {
-          separator: '\n'
-        },
-        files: {
-          'dist/css/home-bundle.min.css': [
-            'tmp/css/global.min.css', 'tmp/css/home.min.css'
-          ],
-          'dist/css/items-bundle.min.css': [
-            'tmp/css/global.min.css', 'tmp/css/items.min.css'
-          ],
-          'dist/css/detail-bundle.min.css': [
-            'tmp/css/global.min.css', 'tmp/css/detail.min.css'
-          ],
-          'dist/css/cart-bundle.min.css': [
-            'tmp/css/global.min.css', 'tmp/css/cart.min.css'
-          ],
-          'dist/css/order-bundle.min.css': [
-            'tmp/css/global.min.css', 'tmp/css/order.min.css'
-          ],
-          'dist/css/orders-bundle.min.css': [
-            'tmp/css/global.min.css', 'tmp/css/orders.min.css'
-          ]
-        }
-      },
-      js: {
-        options: {
-          separator: '\n;'
-        },
-        files: {
-          'dist/js/home-bundle.min.js': [
-            'tmp/js/global.min.js', 'tmp/js/home.min.js'
-          ],
-          'dist/js/items-bundle.min.js': [
-            'tmp/js/global.min.js', 'tmp/js/items.min.js'
-          ],
-          'dist/js/detail-bundle.min.js': [
-            'tmp/js/global.min.js', 'tmp/js/detail.min.js'
-          ],
-          'dist/js/cart-bundle.min.js': [
-            'tmp/js/global.min.js', 'tmp/js/cart.min.js'
-          ],
-          'dist/js/order-bundle.min.js': [
-            'tmp/js/global.min.js', 'tmp/js/order.min.js'
-          ],
-          'dist/js/orders-bundle.min.js': [
-            'tmp/js/global.min.js', 'tmp/js/orders.min.js'
-          ]
+          'dist/js/home.js': 'src/js/home.js',
+          'dist/js/items.js': 'src/js/items.js',
+          'dist/js/detail.js': 'src/js/detail.js',
+          'dist/js/cart.js': 'src/js/cart.js',
+          'dist/js/order.js': 'src/js/order.js',
+          'dist/js/orders.js': 'src/js/orders.js'
         }
       }
     },
@@ -224,15 +183,6 @@ module.exports = function (grunt) {
       }
     },
 
-    copy: {
-      css: {
-        expand: true,
-        cwd: 'bower_components/fontawesome/fonts',
-        src: '**',
-        dest: 'dist/fonts'
-      }
-    },
-
     open: {
       wait: {
         options: {
@@ -254,8 +204,8 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'clean', 'copy:css', 'less', 'cssmin', 'concat:css',
-    'uglify', 'concat:js', 'jade', 'htmlmin'
+    'clean', 'copy:css', 'less', 'cssmin',
+    'uglify', 'jade', 'htmlmin'
   ]);
 
   grunt.registerTask('server', function () {
