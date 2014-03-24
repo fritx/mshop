@@ -5,7 +5,11 @@
 var express = require('express');
 var app = express();
 
-app.use('/content', express.static('content'));
+// public content dirs
+['shop', 'items'].forEach(function (dir) {
+    app.use('/content/' + dir, express.static('content/' + dir));
+  });
+// dist dir
 app.use('/', express.static('dist'));
 
 if (module.parent) {

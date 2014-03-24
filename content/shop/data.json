@@ -7,18 +7,18 @@
   ],
   "banner": {
     "alt": "Great Me",
-    "src": "content/images/shop/banner-2.jpg",
+    "src": "content/shop/banners/2.jpg",
     "href": null
   },
-  "heros": [
+  "boards": [
     {
       "alt": "苏菲 超熟睡",
-      "src": "content/images/shop/hero-0.jpg",
+      "src": "content/shop/boards/0.jpg",
       "href": null
     },
     {
       "alt": "苏菲 特供",
-      "src": "content/images/shop/hero-1.jpg",
+      "src": "content/shop/boards/1.jpg",
       "href": "detail.html?id=3"
     }
   ]

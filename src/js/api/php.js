@@ -15,7 +15,7 @@ function fetchShop(cb) {
         src: shop.banner.src,
         href: shop.banner.url
       },
-      heros: _.map(shop.advs, function (adv) {
+      boards: _.map(shop.advs, function (adv) {
         return {
           alt: adv.alt,
           src: adv.src,

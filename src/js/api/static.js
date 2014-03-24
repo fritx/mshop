@@ -1,5 +1,5 @@
 function fetchShop(cb) {
-  $.get('content/data/shop.json', function (shop) {
+  $.get('content/shop/data.json', function (shop) {
     cb(shop);
   });
 }
@@ -11,7 +11,7 @@ function fetchProductsList(opt, cb) {
     keyword = opt.keyword,
     orderVal = opt.orderVal,
     orderKey = opt.orderKey;
-  $.get('content/data/items.json', function (items) {
+  $.get('content/items/data.json', function (items) {
     // select items
     if (brand != null) {
       items = _.where(items, { brand: brand });

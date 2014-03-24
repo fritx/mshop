@@ -8,13 +8,13 @@ function showBanner(banner) {
   $banner.find('.lazy-box').html(bannerHtml);
 }
 
-function listHeros(heros) {
-  var $herosList = $('#heros-list');
-  var heroTmplFn = _.template($('#hero-tmpl').html());
-  var herosHtml = _.reduce(heros, function (memo, hero) {
-    return memo + heroTmplFn(hero);
+function listBoards(boards) {
+  var $boardsList = $('#boards-list');
+  var boardTmplFn = _.template($('#board-tmpl').html());
+  var boardsHtml = _.reduce(boards, function (memo, board) {
+    return memo + boardTmplFn(board);
   }, '');
-  $herosList.html(herosHtml);
+  $boardsList.html(boardsHtml);
 }
 
 function listBrands() {
@@ -69,8 +69,8 @@ $(function () {
     /* display banner */
     showBanner(shop.banner);
 
-    /* display heros */
-    listHeros(shop.heros);
+    /* display boards */
+    listBoards(shop.boards);
 
     /* display brands */
     listBrands();

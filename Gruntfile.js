@@ -14,8 +14,7 @@ module.exports = function (grunt) {
       keywords: [
         'Great Me', '闺蜜', '女生', 'M巾', '卫生巾', '五邑大学', '袂卓'
       ],
-      description: 'Great Me, 全网首家M巾专营店, 校园送货上门, 让你轻松做女人',
-      transparent: 'content/images/shop/transparent.gif'
+      description: 'Great Me, 全网首家M巾专营店, 校园送货上门, 让你轻松做女人'
     },
 
     clean: {
@@ -29,10 +28,17 @@ module.exports = function (grunt) {
 
     copy: {
       css: {
-        expand: true,
-        cwd: 'bower_components/fontawesome/fonts',
-        src: '**',
-        dest: 'dist/fonts'
+        files: [{
+          expand: true,
+          cwd: 'bower_components/fontawesome/fonts',
+          src: '**',
+          dest: 'dist/fonts'
+        }, {
+          expand: true,
+          cwd: 'src/images',
+          src: '**',
+          dest: 'dist/images'
+        }]
       }
     },
 
@@ -204,7 +210,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'clean', 'copy:css', 'less', 'cssmin',
+    'clean', 'copy', 'less', 'cssmin',
     'uglify', 'jade', 'htmlmin'
   ]);
 

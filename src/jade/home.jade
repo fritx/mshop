@@ -47,11 +47,11 @@ block content
       a.pure-menu-heading.title 品牌列表
       ul.pure-g.list
 
-  script#hero-tmpl(type='text/x-template')
-    li.hero-li.lazy-box
+  script#board-tmpl(type='text/x-template')
+    li.board-li.lazy-box
       | <a{{= href ? ' href="' + href + '" class=""': ' class="default"' }}>
-      //- hero min-height 100px
+      //- board min-height 100px
       .lazy-box.unloaded
         img.lazy(alt='{{= alt }}', src=transparent, data-original='{{= src }}')
       | </a>
-  ul#heros-list
+  ul#boards-list
