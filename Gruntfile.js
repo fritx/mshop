@@ -5,7 +5,6 @@
 var path = require('path');
 
 module.exports = function (grunt) {
-
   grunt.initConfig({
     apiType: grunt.option('api') || 'static',
     serverPort: grunt.option('port') || 8077,
@@ -178,8 +177,7 @@ module.exports = function (grunt) {
             name: name,
             keywords: ['Great Me', '闺蜜', '女生', 'M巾', '卫生巾', '五邑大学', '袂卓'],
             description: 'Great Me, 全网首家M巾专营店, 校园送货上门, 让你轻松做女人',
-            transparent: 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='
-            //transparent: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+            transparent: 'content/images/shop/transparent.gif'
           };
         },
         pretty: true
@@ -195,10 +193,14 @@ module.exports = function (grunt) {
         }
       }
     },
+    htmllint: {
+      html: {
+        src: 'tmp/html/*.html'
+      }
+    },
     htmlmin: {
       html: {
         options: {
-          minifyJS: true,
           removeComments: true,
           collapseWhitespace: true
         },
@@ -237,7 +239,8 @@ module.exports = function (grunt) {
   grunt.registerTask('clear', ['clean:tmp']);
   grunt.registerTask('check', [
     'clean', 'jsonlint',
-    'less', 'csslint', 'jshint'
+    'less', 'csslint', 'jshint',
+    'jade', 'htmllint'
   ]);
 
   grunt.registerTask('build', [
@@ -260,7 +263,6 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'build', 'clear', 'start'
+    'build', 'start'
   ]);
-
 };

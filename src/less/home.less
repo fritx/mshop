@@ -1,5 +1,11 @@
 #banner {
-  min-height: 150px;
+  .lazy-box {
+    &.unloaded {
+      overflow-y: hidden;
+      // hero min-height 150px
+      height: 150px;
+    }
+  }
 }
 
 #content {
@@ -39,13 +45,17 @@
       display: block;
     }
   }
-  a.nav-btn:hover, a.nav-btn:focus {
-    background-color: #FEECEF;
+  a.nav-btn {
+    &:hover, &:focus {
+      background-color: #FEECEF;
+    }
   }
 }
 
-#brands-btn.active {
-  background-color: #FEECEF;
+#brands-btn {
+  &.active {
+    background-color: #FEECEF;
+  }
 }
 #brands-div {
   margin-top: 3px;
@@ -67,9 +77,12 @@
   margin-top: 10px;
   li {
     margin-bottom: 8px;
-    a {
-      display: block;
-      min-height: 100px;  /* hero min-height 100px */
+    .lazy-box {
+      &.unloaded {
+        overflow-y: hidden;
+        // hero min-height 100px
+        height: 100px;
+      }
     }
   }
 }

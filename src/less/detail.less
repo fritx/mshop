@@ -1,13 +1,21 @@
 #item-div {
-  .img-box img {
-    width: 100%;
-    margin: 8px 0 0;
-  }
-  .line .label {
-    display: inline-block;
-  }
   .img-box {
-    min-height: 200px;  /* image min-height 200px */
+    .lazy-box {
+      &.unloaded {
+        overflow: hidden;
+        // image min-height 200px
+        height: 200px;
+      }
+      img {
+        width: 100%;
+        margin: 8px 0 0;
+      }
+    }
+  }
+  .line {
+    .label {
+      display: inline-block;
+    }
   }
   .desc-box {
     margin: 0 0 12px;
@@ -57,7 +65,9 @@
     margin-top: 14px;
     font-size: 120%;
   }
-  .detail-box p {
-    margin: 14px 0;
+  .detail-box {
+    p {
+      margin: 14px 0;
+    }
   }
 }

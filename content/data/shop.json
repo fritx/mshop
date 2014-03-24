@@ -1,17 +1,25 @@
 {
-  "brands": ["苏菲", "朵朵", "七度空间"],
-  "tags": ["日用", "夜用", "护垫"],
+  "brands": [
+    "苏菲", "朵朵", "七度空间"
+  ],
+  "tags": [
+    "日用", "夜用", "护垫"
+  ],
   "banner": {
-    "src": "content/images/shop/banner-2.jpg"
+    "alt": "Great Me",
+    "src": "content/images/shop/banner-2.jpg",
+    "href": null
   },
   "heros": [
     {
-      "src": "content/images/shop/hero-0.jpg"
-      "url": null
+      "alt": "苏菲 超熟睡",
+      "src": "content/images/shop/hero-0.jpg",
+      "href": null
     },
     {
-      "src": "content/images/shop/hero-1.jpg"
-      "url": "detail.html?id=3"
+      "alt": "苏菲 特供",
+      "src": "content/images/shop/hero-1.jpg",
+      "href": "detail.html?id=3"
     }
   ]
 }

@@ -2,6 +2,9 @@ extends layout
 
 block header
   include header
+    block top-right
+      a.header-box.header-btn(onclick='removeFromCart()')
+        i.fa.fa-2x.fa-trash-o
 
 block content
   script#item-tmpl(type='text/x-template')
@@ -17,7 +20,10 @@ block content
             .col-box
               a(href='detail.html?id={{- id }}')
                 .img-box
-                  img.lazy(data-original='{{- image }}')
+                  .square
+                    .square-inner
+                      .lazy-box.unloaded
+                        img.lazy(src=transparent, data-original='{{- image }}')
           .pure-u-7-12
             .col-box.desc-box
               .title {{- title }}

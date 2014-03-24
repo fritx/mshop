@@ -1,8 +1,13 @@
 extends layout
 
 block header
+  script#banner-tmpl(type='text/x-template')
+    | <a{{= href ? ' href="' + href + '" class=""': ' class="default"' }}>
+    //- banner min-height 150px
+    img.lazy(alt='{{= alt }}', src=transparent, data-original='{{= src }}')
+    | </a>
   #banner
-    img.lazy
+    .lazy-box.unloaded
 
 block content
   //- search box
@@ -43,9 +48,10 @@ block content
       ul.pure-g.list
 
   script#hero-tmpl(type='text/x-template')
-    li.hero-li
-      | <a{{= url ? ' href="' + url + '"': ' class="default"' }}>
+    li.hero-li.lazy-box
+      | <a{{= href ? ' href="' + href + '" class=""': ' class="default"' }}>
       //- hero min-height 100px
-      img.lazy(data-original='{{= src }}')
+      .lazy-box.unloaded
+        img.lazy(alt='{{= alt }}', src=transparent, data-original='{{= src }}')
       | </a>
   ul#heros-list

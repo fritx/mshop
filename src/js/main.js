@@ -32,10 +32,12 @@ function loadReady() {
     $('.back-btn').find('i').toggleClass('fa-spinner fa-spin fa-angle-left');
   }, 300);
   // jquery lazyload
-  // no placeholder due to zepto
-  // and i don't want it due to the forced ratio
+  // placeholder not work due to zepto
   $('img.lazy').lazyload({
-    threshold: 200,
+    load: function () {
+      $(this).closest('.lazy-box').removeClass('unloaded');
+    },
+    threshold: 100,
     effect: 'fadeIn'
   });
 }

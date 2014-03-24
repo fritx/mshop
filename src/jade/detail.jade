@@ -5,9 +5,10 @@ block header
 
 block content
   script#item-tmpl(type='text/x-template')
+    //- image min-height 200px
     .img-box
-      //- image min-height 200px
-      img.lazy(data-original='{{- imageLarge }}')
+      .lazy-box.unloaded
+        img.lazy(src=transparent, data-original='{{- imageLarge }}')
     .desc-box
       h3.title {{- title }}
       .pure-g

@@ -13,11 +13,15 @@
 #items-list {
   .item-li {
     margin: 0 0 10px;
-    &:nth-child(odd) > .item-box {
-      padding: 0 5px 0 0;
+    &:nth-child(odd) {
+      > .item-box {
+        padding: 0 5px 0 0;
+      }
     }
-    &:nth-child(even) > .item-box {
-      padding: 0 0 0 5px;
+    &:nth-child(even) {
+      > .item-box {
+        padding: 0 0 0 5px;
+      }
     }
     a.item-box {
       display: block;
@@ -26,26 +30,11 @@
         > div {
           margin-bottom: 6px;
         }
-        .img-box {
-          position: relative;
-          &:before {
-            content: "";
-            display: block;
-            padding-top: 100%;  /* img-box square 1:1 */
-          }
-          .img-inner {
-            position:  absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-          }
-        }
         .desc-box {
           padding: 0 4px;
-        }
-        .desc-box .price {
-          font-size: 120%;
+          .price {
+            font-size: 120%;
+          }
         }
       }
     }

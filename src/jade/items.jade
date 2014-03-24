@@ -14,8 +14,10 @@ block content
         .item
           //- img-box square 1:1
           .img-box
-            .img-inner
-              img.lazy(data-original='{{- image }}')
+            .square
+              .square-inner
+                .lazy-box.unloaded
+                  img.lazy(src=transparent, data-original='{{- image }}')
           .desc-box
             .title {{- title }}
             .price ￥{{- _price.toFixed(1) }}

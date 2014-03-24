@@ -1,6 +1,13 @@
 /**
  * Created by fritz on 3/4/14.
  */
+function showBanner(banner) {
+  var $banner = $('#banner');
+  var bannerTmplFn = _.template($('#banner-tmpl').html());
+  var bannerHtml = bannerTmplFn(banner);
+  $banner.find('.lazy-box').html(bannerHtml);
+}
+
 function listHeros(heros) {
   var $herosList = $('#heros-list');
   var heroTmplFn = _.template($('#hero-tmpl').html());
@@ -59,9 +66,8 @@ $(function () {
       };
     });
 
-    /* set banner source */
-    $('#banner').find('img')
-      .attr('data-original', shop.banner.src);
+    /* display banner */
+    showBanner(shop.banner);
 
     /* display heros */
     listHeros(shop.heros);
