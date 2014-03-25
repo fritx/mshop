@@ -1,0 +1,6 @@
+li.board-li.lazy-box
+  | <a{{= href ? ' href="' + href + '" class=""': ' class="default"' }}>
+  //- board min-height 100px
+  .lazy-box.unloaded
+    img.lazy(alt='{{= alt }}', src=transparent, data-original='{{= src }}')
+  | </a>

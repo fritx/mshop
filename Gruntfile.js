@@ -116,7 +116,7 @@ module.exports = function (grunt) {
       }
     },
     uglify: {
-      js: {
+      common: {
         files: {
           'dist/js/_deps.js': [
             'bower_components/underscore/underscore.js',
@@ -131,6 +131,7 @@ module.exports = function (grunt) {
             'bower_components/zeptojs/src/fx_methods.js',
             'bower_components/zeptojs/src/selector.js',
             'bower_components/alertify.js/lib/alertify.min.js',
+            'bower_components/jade/runtime.js',
             // fake jquery for some dependencies
             'src/js/as-jquery.js',
             'bower_components/jquery.lazyload/jquery.lazyload.min.js'
@@ -138,29 +139,67 @@ module.exports = function (grunt) {
           'dist/js/_site.js': [
             'src/js/api/<%= locals.api %>.js',
             'src/js/main.js'
+          ]
+        }
+      },
+      parts: {
+        files: {
+          'dist/js/home.js': [
+            'src/js/home.js',
+            'tmp/js/home-jst.js'
           ],
-          'dist/js/home.js': 'src/js/home.js',
-          'dist/js/items.js': 'src/js/items.js',
-          'dist/js/detail.js': 'src/js/detail.js',
-          'dist/js/cart.js': 'src/js/cart.js',
-          'dist/js/order.js': 'src/js/order.js',
-          'dist/js/orders.js': 'src/js/orders.js'
+          'dist/js/items.js': [
+            'src/js/items.js'
+          ],
+          'dist/js/detail.js': [
+            'src/js/detail.js'
+          ],
+          'dist/js/cart.js': [
+            'src/js/cart.js'
+          ],
+          'dist/js/order.js': [
+            'src/js/order.js'
+          ],
+          'dist/js/orders.js': [
+            'src/js/orders.js'
+          ]
         }
       }
     },
 
     jade: {
-      options: {
-        data: function (dest, src) {
-          return _.extend({
-            name: path.basename(src, '.jade')
-          }, grunt.config('locals.meta'));
+      jst: {
+        options: {
+          processName: function (file) {
+            return path.basename(file, '.jade');
+          },
+          namespace: 'JST',
+          client: true
         },
-        pretty: true
+        files: {
+          'tmp/js/home-jst.js': [
+            'src/jade/home/banner.jade',
+            'src/jade/home/brands.jade',
+            'src/jade/home/board.jade'
+          ]
+        }
       },
       html: {
+        options: {
+          data: function (dest, src) {
+            // name like home/foo/baz
+            // trailing /index will be ignored
+            var name = /^src\/jade\/(.+)\.jade$/.exec(src[0])[1];
+            name = name.replace(/\/index$/, '');
+            return _.extend({
+              name: name
+            }, grunt.config('locals.meta'));
+          },
+          pretty: true
+        },
         files: {
-          'tmp/html/index.html': 'src/jade/home.jade',
+          // has to be one-to-one
+          'tmp/html/index.html': 'src/jade/home/index.jade',
           'tmp/html/items.html': 'src/jade/items.jade',
           'tmp/html/detail.html': 'src/jade/detail.jade',
           'tmp/html/cart.html': 'src/jade/cart.jade',
@@ -213,7 +252,8 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean', 'copy', 'less', 'cssmin',
-    'uglify', 'jade', 'htmlmin'
+    'jade:jst', 'uglify',
+    'jade:html', 'htmlmin'
   ]);
 
   grunt.registerTask('server', function () {

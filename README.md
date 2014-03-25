@@ -7,6 +7,7 @@ An online shop adapted to mobile.
 - Also as a Real Product: <http://greatme.org/>
 - PureCSS like Web Designing
 - JS-Driven Static Data-Reading
+- Highly Built with [Grunt](http://github.com/gruntjs/grunt)
 
 ## TODO
 
@@ -14,4 +15,4 @@ An online shop adapted to mobile.
 - Client Jade Templating
 - App Restructure
 - Hold the Server Process
-- Deal with IMG Alt
+- Switch to AMD/CMD?

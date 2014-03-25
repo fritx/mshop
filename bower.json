@@ -9,6 +9,7 @@
     "zeptojs": "~1.1.3",
     "store.js": "~1.3.16",
     "alertify.js": "~0.3.11",
-    "jquery.lazyload": "~1.9.3"
+    "jquery.lazyload": "~1.9.3",
+    "jade": "~1.3.0"
   }
 }

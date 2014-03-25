@@ -1,4 +1,4 @@
-extends layout
+extends ../layout
 
 block header
   script#banner-tmpl(type='text/x-template')
@@ -38,14 +38,9 @@ block content
             i.fa.fa-gift
             span 品牌
 
-  script#brand-tmpl(type='text/x-template')
-    li.pure-u-1-2
-      a(href='items.html?brand={{- name }}') {{- name }}
-
   #brands-div.pure-skin-pink.none
     .pure-menu.pure-menu-open.menu
       a.pure-menu-heading.title 品牌列表
-      ul.pure-g.list
 
   script#board-tmpl(type='text/x-template')
     li.board-li.lazy-box

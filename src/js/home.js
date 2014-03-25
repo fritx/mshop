@@ -18,12 +18,10 @@ function listBoards(boards) {
 }
 
 function listBrands() {
-  var $brandsList = $('#brands-div').find('.list');
-  var brandTmplFn = _.template($('#brand-tmpl').html());
-  var brandsHtml = _.reduce(brands, function (memo, brand) {
-    return memo + brandTmplFn(brand);
-  }, '');
-  $brandsList.html(brandsHtml);
+  $('#brands-div').find('.pure-menu')
+    .append(JST.brands({
+      brands: brands
+    }));
 }
 
 function showBrands() {
