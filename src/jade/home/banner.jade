@@ -1,4 +1,9 @@
-| <a{{= href ? ' href="' + href + '" class=""': ' class="default"' }}>
-//- banner min-height 150px
-img.lazy(alt='{{= alt }}', src=transparent, data-original='{{= src }}')
-| </a>
+- var classes = []
+if !banner.href
+  - classes.push('default')
+if !classes.length
+  - classes = false
+a(href=banner.href||false, class=classes)
+  //- banner min-height 150px
+  img.lazy(alt=banner.alt||'',
+  src=transparent, data-original=banner.src||false)

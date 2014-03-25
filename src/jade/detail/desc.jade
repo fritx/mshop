@@ -1,0 +1,22 @@
+//- image min-height 200px
+.img-box
+  .lazy-box.unloaded
+    img.lazy(src=transparent, data-original=item.imageLarge||false)
+.desc-box
+  h3.title= item.title
+  .pure-g
+    .pure-u-1-2
+      .line
+        span.label 销　量
+        span.sales #{item.sales}件
+      .line
+        span.label 超市价
+        span #{item.marketPrice.toFixed(1)}
+    .pure-u-1-2
+      if (item.promotingPrice && item.promotingPrice < item.ourPrice)
+        .line
+          span.label 特　价
+          span.price #{item.promotingPrice.toFixed(1)}
+      .line
+        span.label 闺蜜价
+        span.price ￥#{item.ourPrice.toFixed(1)}

@@ -145,20 +145,19 @@ module.exports = function (grunt) {
       parts: {
         files: {
           'dist/js/home.js': [
-            'src/js/home.js',
-            'tmp/js/home-jst.js'
+            'src/js/home.js', 'tmp/js/home-jst.js'
           ],
           'dist/js/items.js': [
             'src/js/items.js'
           ],
           'dist/js/detail.js': [
-            'src/js/detail.js'
+            'src/js/detail.js', 'tmp/js/detail-jst.js'
           ],
           'dist/js/cart.js': [
             'src/js/cart.js'
           ],
           'dist/js/order.js': [
-            'src/js/order.js'
+            'src/js/order.js', 'tmp/js/order-jst.js'
           ],
           'dist/js/orders.js': [
             'src/js/orders.js'
@@ -180,7 +179,14 @@ module.exports = function (grunt) {
           'tmp/js/home-jst.js': [
             'src/jade/home/banner.jade',
             'src/jade/home/brands.jade',
-            'src/jade/home/board.jade'
+            'src/jade/home/boards.jade'
+          ],
+          'tmp/js/order-jst.js': [
+            'src/jade/order/order.jade'
+          ],
+          'tmp/js/detail-jst.js': [
+            'src/jade/detail/desc.jade',
+            'src/jade/detail/purchase.jade'
           ]
         }
       },
@@ -201,9 +207,9 @@ module.exports = function (grunt) {
           // has to be one-to-one
           'tmp/html/index.html': 'src/jade/home/index.jade',
           'tmp/html/items.html': 'src/jade/items.jade',
-          'tmp/html/detail.html': 'src/jade/detail.jade',
+          'tmp/html/detail.html': 'src/jade/detail/index.jade',
           'tmp/html/cart.html': 'src/jade/cart.jade',
-          'tmp/html/order.html': 'src/jade/order.jade',
+          'tmp/html/order.html': 'src/jade/order/index.jade',
           'tmp/html/orders.html': 'src/jade/orders.jade'
         }
       }

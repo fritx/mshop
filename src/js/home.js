@@ -2,26 +2,24 @@
  * Created by fritz on 3/4/14.
  */
 function showBanner(banner) {
-  var $banner = $('#banner');
-  var bannerTmplFn = _.template($('#banner-tmpl').html());
-  var bannerHtml = bannerTmplFn(banner);
-  $banner.find('.lazy-box').html(bannerHtml);
+  $('#banner').find('.lazy-box')
+    .html(
+      JST['banner']({ banner: banner })
+    );
 }
 
 function listBoards(boards) {
-  var $boardsList = $('#boards-list');
-  var boardTmplFn = _.template($('#board-tmpl').html());
-  var boardsHtml = _.reduce(boards, function (memo, board) {
-    return memo + boardTmplFn(board);
-  }, '');
-  $boardsList.html(boardsHtml);
+  $('#boards-div')
+    .html(
+      JST['boards']({ boards: boards })
+    );
 }
 
 function listBrands() {
   $('#brands-div').find('.pure-menu')
-    .append(JST.brands({
-      brands: brands
-    }));
+    .append(
+      JST['brands']({ brands: brands })
+    );
 }
 
 function showBrands() {

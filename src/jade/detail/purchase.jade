@@ -1,0 +1,16 @@
+form.pure-form.purchase-form
+  .line
+    label.label(for='num') 数量
+    a.pure-button.delta-btn(onclick='deltaNum(-1)')
+      i.fa.fa-minus
+    input#num(type='text', value='1')
+    a.pure-button.delta-btn(onclick='deltaNum(1)')
+      i.fa.fa-plus
+  .pure-g.pure-skin-pink.buttons
+    .pure-u-1-2
+      a.pure-button.pull-left(onclick='gotoCart()') 立即购买
+    .pure-u-1-2
+      a.pure-button.pure-button-primary.pull-right(onclick='addToCart()') 加入购物车
+.detail-box
+  //- use html
+  p!= item.description

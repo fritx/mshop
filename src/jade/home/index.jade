@@ -1,11 +1,6 @@
 extends ../layout
 
 block header
-  script#banner-tmpl(type='text/x-template')
-    | <a{{= href ? ' href="' + href + '" class=""': ' class="default"' }}>
-    //- banner min-height 150px
-    img.lazy(alt='{{= alt }}', src=transparent, data-original='{{= src }}')
-    | </a>
   #banner
     .lazy-box.unloaded
 
@@ -42,11 +37,4 @@ block content
     .pure-menu.pure-menu-open.menu
       a.pure-menu-heading.title 品牌列表
 
-  script#board-tmpl(type='text/x-template')
-    li.board-li.lazy-box
-      | <a{{= href ? ' href="' + href + '" class=""': ' class="default"' }}>
-      //- board min-height 100px
-      .lazy-box.unloaded
-        img.lazy(alt='{{= alt }}', src=transparent, data-original='{{= src }}')
-      | </a>
-  ul#boards-list
+  #boards-div

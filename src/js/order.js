@@ -9,14 +9,13 @@ function showForm(profile) {
     block: '',
     flat: ''
   };
-  var formTmplFn = _.template($('#form-tmpl').html());
-  var formHtml = formTmplFn({
-    cost: _.reduce(oItems, function (memo, oItem) {
-      return memo + oItem._price * oItem.num;
-    }, 0),
-    profile: profile
-  });
-  $('#form-div').html(formHtml);
+  $('#form-div')
+    .html(JST['order']({
+      cost: _.reduce(oItems, function (memo, oItem) {
+        return memo + oItem._price * oItem.num;
+      }, 0),
+      profile: profile
+    }));
 }
 
 function emptyCurrOrder(cb) {

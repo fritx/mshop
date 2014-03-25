@@ -2,9 +2,11 @@
  * Created by fritz on 2/22/14.
  */
 function showItem(item) {
-  var itemTmplFn = _.template($('#item-tmpl').html());
-  var itemHtml = itemTmplFn(item);
-  $('#item-div').html(itemHtml);
+  $('#item-div')
+    .html(
+      JST['desc']({ item: item }) +
+        JST['purchase']({ item: item })
+    );
 }
 
 function deltaNum(delta) {
