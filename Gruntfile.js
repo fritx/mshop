@@ -7,15 +7,14 @@ var _ = require('underscore');
 
 module.exports = function (grunt) {
   grunt.initConfig({
-    apiType: grunt.option('api') || 'static',
-    serverPort: grunt.option('port') || 8077,
-    metaData: {
-      title: 'Great Me',
-      keywords: [
-        'Great Me', '闺蜜', '女生', 'M巾', '卫生巾', '五邑大学', '袂卓'
-      ],
-      description: 'Great Me, 全网首家M巾专营店, 校园送货上门, 让你轻松做女人'
-    },
+    // load local data
+    locals: (function () {
+      var locals = grunt.file.readJSON('locals.json');
+      ['api', 'port'].forEach(function (key) {
+        locals[key] = grunt.option(key) || locals[key];
+      });
+      return locals;
+    })(),
 
     clean: {
       tmp: {
@@ -28,17 +27,20 @@ module.exports = function (grunt) {
 
     copy: {
       css: {
-        files: [{
-          expand: true,
-          cwd: 'bower_components/fontawesome/fonts',
-          src: '**',
-          dest: 'dist/fonts'
-        }, {
-          expand: true,
-          cwd: 'src/images',
-          src: '**',
-          dest: 'dist/images'
-        }]
+        files: [
+          {
+            expand: true,
+            cwd: 'bower_components/fontawesome/fonts',
+            src: '**',
+            dest: 'dist/fonts'
+          },
+          {
+            expand: true,
+            cwd: 'src/images',
+            src: '**',
+            dest: 'dist/images'
+          }
+        ]
       }
     },
 
@@ -134,7 +136,7 @@ module.exports = function (grunt) {
             'bower_components/jquery.lazyload/jquery.lazyload.min.js'
           ],
           'dist/js/_site.js': [
-            'src/js/api/<%= apiType %>.js',
+            'src/js/api/<%= locals.api %>.js',
             'src/js/main.js'
           ],
           'dist/js/home.js': 'src/js/home.js',
@@ -152,7 +154,7 @@ module.exports = function (grunt) {
         data: function (dest, src) {
           return _.extend({
             name: path.basename(src, '.jade')
-          }, grunt.config('metaData'));
+          }, grunt.config('locals.meta'));
         },
         pretty: true
       },
@@ -195,7 +197,7 @@ module.exports = function (grunt) {
           // listen on server task
           openOn: 'server-listen'
         },
-        url: 'http://127.0.0.1:<%= serverPort %>/'
+        url: 'http://127.0.0.1:<%= locals.port %>/'
       }
     }
   });
@@ -217,7 +219,7 @@ module.exports = function (grunt) {
   grunt.registerTask('server', function () {
     this.async();
     var app = require('./app');
-    app.listen(grunt.config.data.serverPort, function (err) {
+    app.listen(grunt.config('locals.port'), function (err) {
       if (err) {
         return grunt.fail.warn(err);
       }

@@ -4,7 +4,7 @@ function fetchShop(cb) {
     // TODO: php side has no banner yet
     shop.banner = shop.banner || (shop.banners && shop.banners[0]) || {
       alt: 'Great Me',
-      src: 'content/images/shop/banner-2.jpg',
+      src: 'content/shop/banners/2.jpg',
       url: null
     };
     cb({

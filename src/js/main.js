@@ -31,13 +31,15 @@ function loadReady() {
   _.delay(function () {
     $('.back-btn').find('i').toggleClass('fa-spinner fa-spin fa-angle-left');
   }, 300);
+  // show content
+  //$('#content').removeClass('none');
   // jquery lazyload
   // placeholder not work due to zepto
   $('img.lazy').lazyload({
     load: function () {
       $(this).closest('.lazy-box').removeClass('unloaded');
     },
-    threshold: 100,
+    threshold: 200,
     effect: 'fadeIn'
   });
 }
