@@ -1,0 +1,14 @@
+ul.pure-g
+  each item in items
+    li.pure-u-1-2.item-li
+      a.item-box(href='detail.html?id=#{item.id}')
+        .item
+          .img-box
+            //- img-box square 1:1
+            .square
+              .square-inner
+                .lazy-box.unloaded
+                  img.lazy(src=transparent, data-original=item.image||false)
+          .desc-box
+            .title= item.title
+            .price ￥#{item._price.toFixed(1)}

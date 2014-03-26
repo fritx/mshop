@@ -8,13 +8,12 @@ function showOrder() {
   }, 0);
   /* fix floating bug */
   cost = Math.round(cost * 10) / 10;
-  var order = {
-    cost: cost,
-    count: checkedItems.length
-  };
-  var orderTmplFn = _.template($('#order-tmpl').html());
-  var orderHtml = orderTmplFn(order);
-  $('#order-div').html(orderHtml);
+  $('#order-div')
+    .html(JST['order']({
+      items: xItems,
+      cost: cost,
+      count: checkedItems.length
+    }));
 }
 
 function prepareOrder() {
@@ -35,12 +34,11 @@ function prepareOrder() {
 }
 
 function listItems() {
-  var $itemsList = $('#items-list');
-  var itemTmplFn = _.template($('#item-tmpl').html());
-  var itemsHtml = _.reduceRight(xItems, function (memo, xItem) {
-    return memo + itemTmplFn(xItem);
-  }, '');
-  $itemsList.html(itemsHtml);
+  $('#items-div')
+    .html(
+      // reverse items list
+      JST['items']({ items: xItems.reverse() })
+    );
   /* tick event */
   $('.tick').on('click', function () {
     $(this).toggleClass('on');

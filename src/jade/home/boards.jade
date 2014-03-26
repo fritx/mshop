@@ -4,8 +4,6 @@ ul
       - var classes = []
       if !board.href
         - classes.push('default')
-      if !classes.length
-        - classes = false
       a(href=board.href||false, class=classes)
         //- board min-height 100px
         .lazy-box.unloaded

@@ -1,0 +1,27 @@
+ul.pure-g
+  each item in items
+    li.pure-u-1.item-li
+      .item-box(data-id=item.id)
+        .pure-g
+          .pure-u-1-12
+            .pure-skin-pink.col-box.tick-box
+              - var classes = ['pure-button', 'tick']
+              if item.checked
+                - classes.push('on')
+              a(class=classes)
+                i.fa.fa-check
+          .pure-u-1-3
+            .col-box
+              a(href='detail.html?id=#{item.id}')
+                .img-box
+                  .square
+                    .square-inner
+                      .lazy-box.unloaded
+                        img.lazy(src=transparent, data-original=item.image||false)
+          .pure-u-7-12
+            .col-box.desc-box
+              .title= item.title
+              .pure-form
+                span.price ￥#{item._price.toFixed(1)}
+                i.fa.fa-times
+                input.num(type='text', value=item.num)

@@ -2,10 +2,10 @@ doctype html
 html(lang='zh-CN')
   head
     include meta
-    title= title
+    title= meta.title
     link(rel='stylesheet', href='css/_deps.css')
     link(rel='stylesheet', href='css/_site.css')
-    link(rel='stylesheet', href='css/#{name}.css')
+    link(rel='stylesheet', href='css/#{page.name}.css')
     block head
   body
     - var transparent = 'images/transparent.gif'
@@ -15,5 +15,5 @@ html(lang='zh-CN')
     include footer
     script(src='js/_deps.js')
     script(src='js/_site.js')
-    script(src='js/#{name}.js')
+    script(src='js/#{page.name}.js')
     block tail

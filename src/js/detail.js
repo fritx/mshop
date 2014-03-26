@@ -4,8 +4,7 @@
 function showItem(item) {
   $('#item-div')
     .html(
-      JST['desc']({ item: item }) +
-        JST['purchase']({ item: item })
+      JST['item']({ item: item })
     );
 }
 
@@ -41,7 +40,9 @@ function addToCart(silient, cb) {
   if (!silient) {
     notify('已加入购物车');
   }
-  cb();
+  if (cb) {
+    cb();
+  }
 }
 
 function gotoCart() {

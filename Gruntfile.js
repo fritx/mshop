@@ -148,19 +148,19 @@ module.exports = function (grunt) {
             'src/js/home.js', 'tmp/js/home-jst.js'
           ],
           'dist/js/items.js': [
-            'src/js/items.js'
+            'src/js/items.js', 'tmp/js/items-jst.js'
           ],
           'dist/js/detail.js': [
             'src/js/detail.js', 'tmp/js/detail-jst.js'
           ],
           'dist/js/cart.js': [
-            'src/js/cart.js'
+            'src/js/cart.js', 'tmp/js/cart-jst.js'
           ],
           'dist/js/order.js': [
             'src/js/order.js', 'tmp/js/order-jst.js'
           ],
           'dist/js/orders.js': [
-            'src/js/orders.js'
+            'src/js/orders.js', 'tmp/js/orders-jst.js'
           ]
         }
       }
@@ -181,12 +181,24 @@ module.exports = function (grunt) {
             'src/jade/home/brands.jade',
             'src/jade/home/boards.jade'
           ],
+          'tmp/js/items-jst.js': [
+            'src/jade/items/items.jade'
+          ],
+          'tmp/js/detail-jst.js': [
+            'src/jade/detail/item.jade',
+            'src/jade/detail/purchase.jade'
+          ],
+          'tmp/js/cart-jst.js': [
+            'src/jade/cart/items.jade',
+            'src/jade/cart/order.jade'
+
+          ],
           'tmp/js/order-jst.js': [
             'src/jade/order/order.jade'
           ],
-          'tmp/js/detail-jst.js': [
-            'src/jade/detail/desc.jade',
-            'src/jade/detail/purchase.jade'
+          'tmp/js/orders-jst.js': [
+            'src/jade/orders/orders.jade',
+            'src/jade/orders/items.jade'
           ]
         }
       },
@@ -197,20 +209,23 @@ module.exports = function (grunt) {
             // trailing /index will be ignored
             var name = /^src\/jade\/(.+)\.jade$/.exec(src[0])[1];
             name = name.replace(/\/index$/, '');
-            return _.extend({
-              name: name
-            }, grunt.config('locals.meta'));
+            return {
+              page: {
+                name: name
+              },
+              meta: grunt.config('locals.meta')
+            };
           },
           pretty: true
         },
         files: {
           // has to be one-to-one
           'tmp/html/index.html': 'src/jade/home/index.jade',
-          'tmp/html/items.html': 'src/jade/items.jade',
+          'tmp/html/items.html': 'src/jade/items/index.jade',
           'tmp/html/detail.html': 'src/jade/detail/index.jade',
-          'tmp/html/cart.html': 'src/jade/cart.jade',
+          'tmp/html/cart.html': 'src/jade/cart/index.jade',
           'tmp/html/order.html': 'src/jade/order/index.jade',
-          'tmp/html/orders.html': 'src/jade/orders.jade'
+          'tmp/html/orders.html': 'src/jade/orders/index.jade'
         }
       }
     },

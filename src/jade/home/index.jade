@@ -12,29 +12,8 @@ block content
       .pure-u-1-5.btn-box
         a.pure-button(onclick='doSearch()')
           i.fa.fa-search
-
-  #nav
-    .pure-g
-      .pure-u-1-4
-        a.nav-btn.pull-left(href='items.html?tags=日用')
-          i.fa.fa-sun-o
-          span 日用
-      .pure-u-1-4
-        a.nav-btn.pull-center(href='items.html?tags=夜用')
-          i.fa.fa-moon-o
-          span 夜用
-      .pure-u-1-4
-        a.nav-btn.pull-center(href='items.html?tags=护垫')
-          i.fa.fa-heart-o
-          span 护垫
-      .pure-u-1-4
-        .nav-box
-          a#brands-btn.nav-btn.pull-right(onclick='showBrands()')
-            i.fa.fa-gift
-            span 品牌
-
+  include nav
   #brands-div.pure-skin-pink.none
     .pure-menu.pure-menu-open.menu
       a.pure-menu-heading.title 品牌列表
-
   #boards-div

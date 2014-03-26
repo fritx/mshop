@@ -55,11 +55,13 @@ function submitOrder() {
   })) {
     return notify('订单填写不完整');
   }
+  // disable submit button
+  $('.submit-btn').attr('disabled', true);
   ask('确定提交订单?', function (ok) {
     if (!ok) {
+      $('.submit-btn').removeAttr('disabled');
       return;
     }
-    $('.submit-btn').attr('disabled', true);
     saveOrder(oItems, profile, extra, function () {
       emptyCurrOrder(function () {
         notify('订单提交成功', 'orders.html');

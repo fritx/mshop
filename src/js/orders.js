@@ -2,17 +2,18 @@
  * Created by fritz on 3/4/14.
  */
 function listOrders(orders) {
-  var $ordersList = $('#orders-list');
-  var orderTmplFn = _.template($('#order-tmpl').html());
-  var ordersHtml = _.reduceRight(orders, function (memo, order) {
+  _.each(orders, function (order) {
     order.profile = order.profile || {};
     order.extra = order.extra || {};
     order.cost = _.reduce(order.items, function (memo, item) {
       return memo + item._price * item.num;
     }, 0);
-    return memo + orderTmplFn(order);
-  }, '');
-  $ordersList.html(ordersHtml);
+    order.status = order.status || '谢谢惠顾';
+  });
+  $('#orders-div')
+    .html(
+      JST['orders']({ orders: orders })
+    );
 }
 
 $(function () {

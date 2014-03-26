@@ -20,3 +20,7 @@
       .line
         span.label 闺蜜价
         span.price ￥#{item.ourPrice.toFixed(1)}
+include purchase
+.detail-box
+  //- use html
+  p!= item.description

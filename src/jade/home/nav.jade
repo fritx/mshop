@@ -1,0 +1,23 @@
+#nav
+  .pure-g
+    - var key
+    .pure-u-1-4
+      - key = '日用'
+      a.nav-btn.pull-left(href='items.html?tags=#{key}')
+        i.fa.fa-sun-o
+        span= key
+    .pure-u-1-4
+      - key = '夜用'
+      a.nav-btn.pull-center(href='items.html?tags=#{key}')
+        i.fa.fa-moon-o
+        span= key
+    .pure-u-1-4
+      - key = '护垫'
+      a.nav-btn.pull-center(href='items.html?tags=#{key}')
+        i.fa.fa-heart-o
+        span= key
+    .pure-u-1-4
+      .nav-box
+        a#brands-btn.nav-btn.pull-right(onclick='showBrands()')
+          i.fa.fa-gift
+          span 品牌

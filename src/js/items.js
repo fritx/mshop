@@ -2,12 +2,10 @@
  * Created by fritz on 2/22/14.
  */
 function listItems(items) {
-  var $itemsList = $('#items-list');
-  var itemTmplFn = _.template($('#item-tmpl').html());
-  var itemsHtml = _.reduce(items, function (memo, item) {
-    return memo + itemTmplFn(item);
-  }, '');
-  $itemsList.html(itemsHtml);
+  $('#items-div')
+    .html(
+      JST['items']({ items: items })
+    );
 }
 
 function signToVal(sign) {

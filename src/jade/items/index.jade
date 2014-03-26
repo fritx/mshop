@@ -1,0 +1,10 @@
+extends ../layout
+
+block header
+  include ../header
+
+block content
+  #sort-box.pure-skin-pink
+    a.pure-button.sort-key(data-by='!sales') 销量
+    a.pure-button.sort-key(data-by='-price') 价格
+  #items-div

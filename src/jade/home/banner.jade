@@ -1,8 +1,6 @@
 - var classes = []
 if !banner.href
   - classes.push('default')
-if !classes.length
-  - classes = false
 a(href=banner.href||false, class=classes)
   //- banner min-height 150px
   img.lazy(alt=banner.alt||'',
