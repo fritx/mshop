@@ -2,19 +2,51 @@
  * Created by fritz on 3/4/14.
  */
 function showForm(profile) {
-  profile = profile || {
-    name: '',
-    shortTel: '',
-    tel: '',
-    block: '',
-    flat: ''
-  };
+  // default fields
+  var fields = [
+    {
+      readonly: true,
+      title: '地　区',
+      key: 'area',
+      value: '五邑大学'
+    },
+    {
+      title: '收货人',
+      key: 'name'
+    },
+    {
+      title: '短　号',
+      key: 'shortTel'
+    },
+    {
+      title: '长　号',
+      key: 'tel'
+    },
+    {
+      title: '宿舍楼',
+      key: 'block'
+    },
+    {
+      title: '宿舍号',
+      key: 'flat'
+    },
+    {
+      key: 'message',
+      placeholder: '给 Great Me 留言'
+    }
+  ];
+  // fill profile
+  _.each(fields, function (field) {
+    field.value = profile[field.key] || field.value;
+  });
   $('#form-div')
     .html(JST['order']({
+      fields: _.partition(fields, function (field) {
+        return field.title;
+      }),
       cost: _.reduce(oItems, function (memo, oItem) {
         return memo + oItem._price * oItem.num;
-      }, 0),
-      profile: profile
+      }, 0)
     }));
 }
 
@@ -40,17 +72,17 @@ function emptyCurrOrder(cb) {
 }
 
 function submitOrder() {
-  var profile = {
-    name: $('[name="name"]').val(),
-    shortTel: $('[name="shortTel"]').val(),
-    tel: $('[name="tel"]').val(),
-    block: $('[name="block"]').val(),
-    flat: $('[name="flat"]').val()
-  };
-  var extra = {
-    message: $('[name="message"]').val()
-  };
-  if (_.some(['name', 'tel', 'block', 'flat'], function (key) {
+  var profile = _.reduce($('.profile-box').find('[name]'), function (memo, el) {
+    var $el = $(el);
+    memo[$el.attr('name')] = $el.val();
+    return memo;
+  }, {});
+  var extra = _.reduce($('.submit-box').find('[name]'), function (memo, el) {
+    var $el = $(el);
+    memo[$el.attr('name')] = $el.val();
+    return memo;
+  }, {});
+  if (_.some(['area', 'name', 'tel', 'block', 'flat'], function (key) {
     return profile[key] === '';
   })) {
     return notify('订单填写不完整');

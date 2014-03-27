@@ -98,7 +98,7 @@ function fetchOrderProfile(cb) {
 }
 function saveOrderProfile(profile, cb) {
   store.set('orderProfile', _.pick(profile, [
-    'name', 'shortTel', 'tel', 'block', 'flat'
+    'area', 'name', 'shortTel', 'tel', 'block', 'flat'
   ]));
   cb();
 }

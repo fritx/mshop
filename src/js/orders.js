@@ -12,7 +12,8 @@ function listOrders(orders) {
   });
   $('#orders-div')
     .html(
-      JST['orders']({ orders: orders })
+      // reverse orders
+      JST['orders']({ orders: orders.reverse() })
     );
 }
 

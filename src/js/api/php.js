@@ -131,7 +131,6 @@ function saveOrder(oItems, profile, extra, cb) {
   var orders = store.get('myOrders');
   orders.push({
     items: oItems,
-    status: '谢谢惠顾',
     profile: profile,
     extra: extra
   });

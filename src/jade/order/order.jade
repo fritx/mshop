@@ -9,7 +9,8 @@ form.pure-form
         span.trailing 合计:
         span.price ￥#{cost.toFixed(1)}
   fieldset.pure-skin-pink.submit-box
-    input(type='text', name='message',
-    placeholder='给GreatMe留言', value=profile.message||'')
+    each field in fields[1]
+      input(type='text', name=field.key,
+      placeholder=field.placeholder, value=field.value||'')
     button.pure-button.pure-button-primary.submit-btn(
     onclick='submitOrder();return false') 提交订单

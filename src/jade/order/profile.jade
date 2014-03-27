@@ -1,13 +1,8 @@
 fieldset.profile-box
-  - var fields = {}
-  - fields.name = '收货人'
-  - fields.shortTel = '短号'
-  - fields.tel = '长号'
-  - fields.block = '宿舍楼'
-  - fields.flat = '宿舍号'
-  each title, name in fields
+  each field in fields[0]
     .pure-g
       .pure-u-1-3.label-box
-        label= title
+        label= field.title
       .pure-u-2-3.input-box
-        input(type='text', name=name, value=profile[name]||'')
+        input(type='text', name=field.key,
+        value=field.value||'', readonly=field.readonly)

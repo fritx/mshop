@@ -255,7 +255,7 @@ module.exports = function (grunt) {
       wait: {
         options: {
           // listen on server task
-          openOn: 'server-listen'
+          openOn: 'server:listen'
         },
         url: 'http://127.0.0.1:<%= locals.port %>/'
       }
@@ -279,13 +279,15 @@ module.exports = function (grunt) {
 
   grunt.registerTask('server', function () {
     this.async();
-    var app = require('./app');
-    app.listen(grunt.config('locals.port'), function (err) {
+    var port = grunt.config('locals.port');
+    var server = require('./server');
+    server.listen(port, function (err) {
       if (err) {
         return grunt.fail.warn(err);
       }
+      grunt.log.writeln('Server started.');
       // trigger for open task
-      grunt.event.emit('server-listen');
+      grunt.event.emit('server:listen');
     });
   });
   grunt.registerTask('start', [
