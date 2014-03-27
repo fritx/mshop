@@ -36,9 +36,11 @@ function showForm(profile) {
     }
   ];
   // fill profile
-  _.each(fields, function (field) {
-    field.value = profile[field.key] || field.value;
-  });
+  if (profile) {
+    _.each(fields, function (field) {
+      field.value = profile[field.key] || field.value;
+    });
+  }
   $('#form-div')
     .html(JST['order']({
       fields: _.partition(fields, function (field) {
