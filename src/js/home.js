@@ -46,32 +46,34 @@ function doSearch() {
 
 var brands, brandsOn = false;
 
-$(function () {
-  /* title */
-  setTitle('Great Me');
+function initPage() {
+  $(function () {
+    /* title */
+    setTitle('Great Me');
 
-  /* active */
-  $('#footer').find('.fa-home').closest('a')
-    .addClass('active').removeAttr('href');
+    /* active */
+    $('#footer').find('.fa-home').closest('a')
+      .addClass('active').removeAttr('href');
 
-  /* load shop */
-  fetchShop(function (shop) {
-    brands = _.map(shop.brands, function (brand) {
-      return {
-        name: brand
-      };
+    /* load shop */
+    fetchShop(function (shop) {
+      brands = _.map(shop.brands, function (brand) {
+        return {
+          name: brand
+        };
+      });
+
+      /* display banner */
+      showBanner(shop.banner);
+
+      /* display boards */
+      listBoards(shop.boards);
+
+      /* display brands */
+      listBrands();
+
+      /* ready */
+      loadReady();
     });
-
-    /* display banner */
-    showBanner(shop.banner);
-
-    /* display boards */
-    listBoards(shop.boards);
-
-    /* display brands */
-    listBrands();
-
-    /* ready */
-    loadReady();
   });
-});
+}

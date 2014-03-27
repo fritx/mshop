@@ -17,24 +17,26 @@ function listOrders(orders) {
     );
 }
 
-$(function () {
-  /* title */
-  setTitle('我的订单 - Great Me', '我的订单');
+function initPage() {
+  $(function () {
+    /* title */
+    setTitle('我的订单 - Great Me', '我的订单');
 
-  /* active */
-  $('#footer').find('.fa-user').closest('a')
-    .addClass('active').removeAttr('href');
+    /* active */
+    $('#footer').find('.fa-user').closest('a')
+      .addClass('active').removeAttr('href');
 
-  /* load orders */
-  fetchOrdersList(function (orders) {
-    if (orders.length <= 0) {
-      return notify('暂时没有订单', true);
-    }
+    /* load orders */
+    fetchOrdersList(function (orders) {
+      if (orders.length <= 0) {
+        return notify('暂时没有订单', true);
+      }
 
-    /* list items */
-    listOrders(orders);
+      /* list items */
+      listOrders(orders);
 
-    /* ready */
-    loadReady();
+      /* ready */
+      loadReady();
+    });
   });
-});
+}

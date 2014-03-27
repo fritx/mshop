@@ -8,7 +8,7 @@ function showForm(profile) {
       readonly: true,
       title: '地　区',
       key: 'area',
-      value: '五邑大学'
+      value: area.title
     },
     {
       title: '收货人',
@@ -107,24 +107,26 @@ function submitOrder() {
 /* variables */
 var oItems;
 
-$(function () {
-  /* title */
-  setTitle('确认下单 - Great Me', '确认下单');
+function initPage() {
+  $(function () {
+    /* title */
+    setTitle('确认下单 - Great Me', '确认下单');
 
-  /* load order */
-  fetchCurrOrder(function (_oItems) {
-    oItems = _oItems;
+    /* load order */
+    fetchCurrOrder(function (_oItems) {
+      oItems = _oItems;
 
-    if (oItems.length <= 0) {
-      return notify('没有勾选的宝贝', true);
-    }
+      if (oItems.length <= 0) {
+        return notify('没有勾选的宝贝', true);
+      }
 
-    fetchOrderProfile(function (profile) {
-      /* list items */
-      showForm(profile);
+      fetchOrderProfile(function (profile) {
+        /* list items */
+        showForm(profile);
 
-      /* ready */
-      loadReady();
+        /* ready */
+        loadReady();
+      });
     });
   });
-});
+}

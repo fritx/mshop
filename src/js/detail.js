@@ -56,25 +56,27 @@ var params = searchToParams(location.href);
 var id = +params.id;
 var item;
 
-$(function () {
-  /* load item */
-  fetchProduct({ id: id }, function (_item) {
-    item = _item;
+function initPage() {
+  $(function () {
+    /* load item */
+    fetchProduct({ id: id }, function (_item) {
+      item = _item;
 
-    if (!item) {
-      notify('宝贝不存在', true);
-    }
+      if (!item) {
+        notify('宝贝不存在', true);
+      }
 
-    /* title */
-    setTitle(item.title + ' - Great Me', '宝贝详情');
+      /* title */
+      setTitle(item.title + ' - Great Me', '宝贝详情');
 
-    /* extend item */
-    calcPrice(item);
+      /* extend item */
+      calcPrice(item);
 
-    /* display item */
-    showItem(item);
+      /* display item */
+      showItem(item);
 
-    /* ready */
-    loadReady();
+      /* ready */
+      loadReady();
+    });
   });
-});
+}

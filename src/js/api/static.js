@@ -123,3 +123,12 @@ function saveOrder(oItems, profile, extra, cb) {
     cb();
   });
 }
+function fetchAreasList(cb) {
+  fetchShop(function (shop) {
+    cb(shop.areas);
+  });
+}
+function saveArea(area, cb) {
+  // nothing
+  cb();
+}

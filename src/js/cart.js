@@ -84,29 +84,31 @@ function gotoOrder() {
 /* variables */
 var xItems;
 
-$(function () {
-  /* title */
-  setTitle('购物车 - Great Me', '购物车');
+function initPage() {
+  $(function () {
+    /* title */
+    setTitle('购物车 - Great Me', '购物车');
 
-  /* active */
-  $('#footer').find('.fa-shopping-cart').closest('a')
-    .addClass('active').removeAttr('href');
+    /* active */
+    $('#footer').find('.fa-shopping-cart').closest('a')
+      .addClass('active').removeAttr('href');
 
-  /* load items */
-  fetchCart(function (_xItems) {
-    xItems = _xItems;
+    /* load items */
+    fetchCart(function (_xItems) {
+      xItems = _xItems;
 
-    if (xItems.length <= 0) {
-      return notify('购物车暂时没有宝贝', true);
-    }
+      if (xItems.length <= 0) {
+        return notify('购物车暂时没有宝贝', true);
+      }
 
-    /* list items */
-    listItems();
+      /* list items */
+      listItems();
 
-    /* display order desc */
-    showOrder();
+      /* display order desc */
+      showOrder();
 
-    /* ready */
-    loadReady();
+      /* ready */
+      loadReady();
+    });
   });
-});
+}

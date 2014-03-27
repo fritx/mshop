@@ -167,3 +167,16 @@ function parseItem(dItem) {
   calcPrice(item);
   return item;
 }
+function fetchAreasList(cb) {
+  $.get('../getarealist.php', function (areas) {
+    cb(_.map(areas, function (area) {
+      return {
+        id: +area.id,
+        title: area.areaname
+      };
+    }));
+  });
+}
+function saveArea(area, cb) {
+  $.post('../setarea.php', { area_id: area.id }, cb);
+}
