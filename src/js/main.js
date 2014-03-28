@@ -126,25 +126,24 @@ if (!$().text || !store.enabled) {
   throw new Error('Browser too bad.');
 }
 
+store.set('cartItems', store.get('cartItems') || []);
+store.set('currOrderItems', store.get('currOrderItems') || []);
+store.set('orderProfile', store.get('orderProfile') || {});
+store.set('myOrders', store.get('myOrders') || []);
+
 // TODO: area id
 var params = searchToParams(location.href);
 var area;
-var areas;
-fetchAreasList(function (_areas) {
-  areas = _areas;
-  area = _.findWhere(areas, { id: +params.area || 1 });
+fetchAreasList(function (areas) {
+  var profile = store.get('orderProfile');
+  area = params.area ? _.findWhere(areas, { id: +params.area }) :
+    _.findWhere(areas, { title: profile.area }) || areas[0];
   if (!area) {
     notify('你的地区信息不对啊!');
     throw new Error('Invalid area.');
   }
 
   saveArea(area, function () {
-    store.set('cartItems', store.get('cartItems') || []);
-    store.set('currOrderItems', store.get('currOrderItems') || []);
-    var profile = store.get('orderProfile') || {};
-    store.set('orderProfile', _.extend(profile, { area: area.title }));
-    store.set('myOrders', store.get('myOrders') || []);
-
     _.templateSettings = {
       evaluate: /{{([\s\S]+?)}}/g,
       interpolate: /{{=([\s\S]+?)}}/g,

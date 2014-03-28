@@ -129,6 +129,9 @@ function fetchAreasList(cb) {
   });
 }
 function saveArea(area, cb) {
-  // nothing
+  var profile = store.get('orderProfile');
+  store.set('orderProfile', _.extend(profile, {
+    area: area.title
+  }));
   cb();
 }
