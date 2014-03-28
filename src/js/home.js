@@ -1,6 +1,3 @@
-/**
- * Created by fritz on 3/4/14.
- */
 function showBanner(banner) {
   $('#banner').find('.lazy-box')
     .html(
@@ -35,7 +32,7 @@ function showBrands() {
 }
 
 function doSearch() {
-  var keyword = $('#search input').val();
+  var keyword = $('#search').find('input').val();
   if (!keyword) {
     return;
   }

@@ -10,10 +10,14 @@ An online shop adapted to mobile.
 - Highly Built with [Grunt](http://github.com/gruntjs/grunt)
 - Completely Switched to Jade/JST
 
+## Processing
+
+- App Restructure
+
 ## TODO
 
+- YUI Docs
 - PhantomJS Test?
-- App Restructure
 - Hold the Server Process (Grunt-)
 - Switch to AMD/CMD?
 - Better Non-Mobile Compatibility

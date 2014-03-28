@@ -1,6 +1,3 @@
-/**
- * Created by fritz on 3/4/14.
- */
 function showForm(profile) {
   // default fields
   var fields = [

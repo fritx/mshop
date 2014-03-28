@@ -1,6 +1,3 @@
-/**
- * Created by fritz on 2/22/14.
- */
 function showItem(item) {
   $('#item-div')
     .html(

@@ -1,6 +1,3 @@
-/**
- * Created by fritz on 2/23/14.
- */
 function searchToParams(search) {
   var pat = /([^?=&#]*)=([^?=&#]+)/g, params = {};
   decodeURIComponent(search)

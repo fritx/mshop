@@ -1,6 +1,3 @@
-/**
- * Created by fritz on 3/4/14.
- */
 function listOrders(orders) {
   _.each(orders, function (order) {
     order.profile = order.profile || {};

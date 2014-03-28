@@ -1,6 +1,3 @@
-/**
- * Created by fritz on 3/1/14.
- */
 function showOrder() {
   var checkedItems = _.where(xItems, { checked: true });
   var cost = _.reduce(checkedItems, function (memo, item) {

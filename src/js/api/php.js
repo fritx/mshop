@@ -169,6 +169,7 @@ function parseItem(dItem) {
 }
 function fetchAreasList(cb) {
   $.get('../getarealist.php', function (areas) {
+    areas = JSON.parse(areas);
     cb(_.map(areas, function (area) {
       return {
         id: +area.id,
