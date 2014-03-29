@@ -75,19 +75,19 @@ img {
     color: white;
     padding: 9px 0 5px;
     text-align: center;
+    &.title-text {
+      font-size: 150%;
+      margin: 2px 0 0;
+    }
   }
   a.header-btn {
+    width: 100%;
     &:hover, &:focus {
       background-color: #F9A4B2;
     }
-    width: 100%;
     i {
       height: 100%;
     }
-  }
-  .title-text {
-    font-size: 150%;
-    margin: 2px 0 0;
   }
 }
 
@@ -98,7 +98,8 @@ img {
 }
 
 #footer {
-  background-color: #555;
+  @bgcolor: #555;
+  background-color: @bgcolor;
   position: fixed;
   z-index: 999;
   bottom: 0;
@@ -112,11 +113,11 @@ img {
     display: block;
     padding: 5px 0;
     text-align: center;
+    &:hover, &:focus {
+      background-color: lighten(@bgcolor, 20%);
+    }
     &.active {
       background-color: #F17489;
-    }
-    &:hover, &:focus {
-      background-color: #aaa;
     }
   }
 }

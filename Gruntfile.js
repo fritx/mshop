@@ -78,7 +78,7 @@ module.exports = function (grunt) {
             'bower_components/pure/buttons-min.css',
             'bower_components/pure/forms-nr-min.css',
             'bower_components/pure/grids-nr-min.css',
-            'bower_components/pure/menus-nr-min.css',
+            'bower_components/pure/menus-core-min.css',
             'bower_components/alertify.js/themes/alertify.core.css',
             'bower_components/alertify.js/themes/alertify.default.css'
           ],

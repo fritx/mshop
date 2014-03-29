@@ -27,11 +27,11 @@ function showBrands() {
   $('#brands-div').toggleClass('none');
   brandsOn = !brandsOn;
   if (brandsOn) {
-    location.href = '#brands-btn';
+    $(window).scrollTop($('#brands-btn').offset().top);
   }
 }
 
-function doSearch() {
+/*function doSearch() {
   var keyword = $('#search').find('input').val();
   if (!keyword) {
     return;
@@ -39,7 +39,7 @@ function doSearch() {
   location.href = 'items.html' + paramsToSearch({
     keyword: keyword
   });
-}
+}*/
 
 var brands, brandsOn = false;
 
