@@ -14,7 +14,7 @@ function listOrders(orders) {
     );
 }
 
-function initPage() {
+initPage(function () {
   $(function () {
     /* title */
     setTitle('我的订单 - Great Me', '我的订单');
@@ -36,4 +36,4 @@ function initPage() {
       loadReady();
     });
   });
-}
+});

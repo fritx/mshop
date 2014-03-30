@@ -81,7 +81,7 @@ function gotoOrder() {
 /* variables */
 var xItems;
 
-function initPage() {
+initPage(function () {
   $(function () {
     /* title */
     setTitle('购物车 - Great Me', '购物车');
@@ -108,4 +108,4 @@ function initPage() {
       loadReady();
     });
   });
-}
+});

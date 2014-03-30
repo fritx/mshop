@@ -53,7 +53,7 @@ var params = searchToParams(location.href);
 var id = +params.id;
 var item;
 
-function initPage() {
+initPage(function () {
   $(function () {
     /* load item */
     fetchProduct({ id: id }, function (_item) {
@@ -76,4 +76,4 @@ function initPage() {
       loadReady();
     });
   });
-}
+});

@@ -168,7 +168,7 @@ function parseItem(dItem) {
   return item;
 }
 function fetchAreasList(cb) {
-  $.get('../getarealist.php', function (areas) {
+  /*$.get('../getarealist.php', function (areas) {
     areas = JSON.parse(areas);
     cb(_.map(areas, function (area) {
       return {
@@ -176,8 +176,23 @@ function fetchAreasList(cb) {
         title: area.areaname
       };
     }));
-  });
+  });*/
+  cb([
+    {
+      "id": 1,
+      "title": "五邑大学"
+    },
+    {
+      "id": 2,
+      "title": "江门职业"
+    }
+  ]);
 }
 function saveArea(area, cb) {
-  $.post('../setarea.php', { area_id: area.id }, cb);
+  var profile = store.get('orderProfile');
+  store.set('orderProfile', _.extend(profile, {
+    area: area.title
+  }));
+  cb();
+  //$.post('../setarea.php', { area_id: area.id }, cb);
 }

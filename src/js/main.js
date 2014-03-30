@@ -52,7 +52,7 @@ function toggleFooter(show) {
 function makeFooterToggle() {
   var $window = $(window);
   var H = $window.height();
-  $window.on('resize', _.throttle(function () {
+  $window.on('resize', _.debounce(function () {
     var h = $window.height();
     if (h < 0.7 * H) {
       toggleFooter(false);
@@ -60,15 +60,9 @@ function makeFooterToggle() {
       toggleFooter(true);
     }
     H = h;
-  }, 100));
+  }, 300));
 }
 
-alertify.set({
-  labels: {
-    ok: '好的',
-    cancel: '不要'
-  }
-});
 function notify(msg, back) {
   // message
   alertify.alert(msg, function () {
@@ -118,40 +112,49 @@ function setTitle(title, shortTitle) {
 }
 
 /* init */
-if (!$().text || !store.enabled) {
-  notify('你的浏览器没跟上时代啊!');
-  throw new Error('Browser too bad.');
-}
-
-store.set('cartItems', store.get('cartItems') || []);
-store.set('currOrderItems', store.get('currOrderItems') || []);
-store.set('orderProfile', store.get('orderProfile') || {});
-store.set('myOrders', store.get('myOrders') || []);
-
-// TODO: area id
 var params = searchToParams(location.href);
 var area;
-fetchAreasList(function (areas) {
-  var profile = store.get('orderProfile');
-  area = params.area ? _.findWhere(areas, { id: +params.area }) :
-    _.findWhere(areas, { title: profile.area }) || areas[0];
-  if (!area) {
-    notify('你的地区信息不对啊!');
-    throw new Error('Invalid area.');
+
+function initPage(cb) {
+  if (!$().text || !store.enabled) {
+    notify('你的浏览器没跟上时代啊!');
+    throw new Error('Browser too bad.');
   }
 
-  saveArea(area, function () {
-    _.templateSettings = {
-      evaluate: /{{([\s\S]+?)}}/g,
-      interpolate: /{{=([\s\S]+?)}}/g,
-      escape: /{{-([\s\S]+?)}}/g
-    };
+  store.set('cartItems', store.get('cartItems') || []);
+  store.set('currOrderItems', store.get('currOrderItems') || []);
+  store.set('orderProfile', store.get('orderProfile') || {});
+  store.set('myOrders', store.get('myOrders') || []);
 
-    $(function () {
-      /* toggling footer */
-      makeFooterToggle();
+  fetchAreasList(function (areas) {
+    var profile = store.get('orderProfile');
+    area = params.area ? _.findWhere(areas, { id: +params.area }) :
+      _.findWhere(areas, { title: profile.area }) || areas[0];
+    if (!area) {
+      notify('你的地区信息不对啊!');
+      throw new Error('Invalid area.');
+    }
+
+    saveArea(area, function () {
+      _.templateSettings = {
+        evaluate: /{{([\s\S]+?)}}/g,
+        interpolate: /{{=([\s\S]+?)}}/g,
+        escape: /{{-([\s\S]+?)}}/g
+      };
+
+      alertify.set({
+        labels: {
+          ok: '好的',
+          cancel: '不要'
+        }
+      });
+
+      $(function () {
+        /* toggling footer */
+        makeFooterToggle();
+      });
+
+      cb();
     });
-
-    initPage();
   });
-});
+}

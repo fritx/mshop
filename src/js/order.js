@@ -104,7 +104,7 @@ function submitOrder() {
 /* variables */
 var oItems;
 
-function initPage() {
+initPage(function () {
   $(function () {
     /* title */
     setTitle('确认下单 - Great Me', '确认下单');
@@ -126,4 +126,4 @@ function initPage() {
       });
     });
   });
-}
+});

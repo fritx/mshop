@@ -33,7 +33,7 @@ function showBrands() {
 
 var brands, brandsOn = false;
 
-function initPage() {
+initPage(function () {
   $(function () {
     /* title */
     setTitle('Great Me');
@@ -63,4 +63,4 @@ function initPage() {
       loadReady();
     });
   });
-}
+});

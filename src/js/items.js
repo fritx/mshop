@@ -22,7 +22,7 @@ var orderBy = params.orderBy || '-price',
   orderVal = signToVal(orderOp),
   orderKey = orderBy.substr(1);
 
-function initPage() {
+initPage(function () {
   $(function () {
     /* keys to sort with */
     var $sortKeys = $('.sort-key');
@@ -80,4 +80,4 @@ function initPage() {
       loadReady();
     });
   });
-}
+});

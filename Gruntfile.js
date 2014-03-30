@@ -64,7 +64,6 @@ module.exports = function (grunt) {
       css: {
         src: [
           'src/css/**/*.css',
-          '!src/css/pure-skin-pink.css',
           'tmp/css/**/*.css'
         ]
       }
