@@ -1,9 +1,12 @@
 header#header
   .pure-g
     .pure-u-1-6
-      a.header-box.header-btn.back-btn(onclick='history.back()')
-        i.fa.fa-2x.fa-spinner.fa-spin
+      .header-box
+        a.header-btn.back-btn(onclick='history.back()')
+          i.fa.fa-2x.fa-spinner.fa-spin
     .pure-u-2-3
-      .header-box.title-text
+      .header-box
+        .title-text
     .pure-u-1-6
-      block top-right
+      .header-box
+        block top-right

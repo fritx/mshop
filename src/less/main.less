@@ -1,5 +1,8 @@
+@import "config";
+
 body {
-  color: #575757;
+  background-color: @body-bgcolor;
+  color: @body-color;
 }
 a, button {
   cursor: pointer;
@@ -15,6 +18,9 @@ img {
   width: 100%;
   max-width: 100%;
   height: auto;
+}
+input {
+  border-radius: 0 !important;
 }
 
 .none {
@@ -35,15 +41,50 @@ img {
   font-size: 130%;
 }
 .price {
-  color: #FF0E30;
+  color: @price-color;
 }
 .lazy-box {
   &.unloaded {
     // box background
-    background-color: #f6f6f6;
+    background-color: @lazy-bgcolor;
     img {
       // box background instead of src placeholder
       visibility: hidden;
+    }
+  }
+}
+
+.btn {
+  background-color: @btn-bgcolor;
+  color: @btn-color;
+  padding: 9px 28px;
+  display: inline-block;
+  zoom: 1;
+  line-height: normal;
+  white-space: nowrap;
+  vertical-align: baseline;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  &:hover, &:focus {
+    background-color: @btn-bgcolor-hover;
+  }
+  &.primary {
+    background-color: @btn-primary-bgcolor;
+    color: @btn-primary-color;
+    &:hover, &:focus {
+      background-color: @btn-primary-bgcolor-hover;
+    }
+  }
+  &.secondary {
+    background-color: @btn-secondary-bgcolor;
+    color: @btn-secondary-color;
+    &:hover, &:focus {
+      background-color: @btn-secondary-bgcolor-hover;
     }
   }
 }
@@ -65,28 +106,31 @@ img {
 }
 
 #header {
-  background-color: #F17489;
+  opacity: @header-opacity;
+  background-color: @header-bgcolor;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 999;
   .header-box {
-    display: block;
-    color: white;
-    padding: 9px 0 5px;
+    color: @header-color;
     text-align: center;
-    &.title-text {
+    .title-text {
       font-size: 150%;
+      padding: 9px 0 5px;
       margin: 2px 0 0;
     }
-  }
-  a.header-btn {
-    width: 100%;
-    &:hover, &:focus {
-      background-color: #F9A4B2;
-    }
-    i {
-      height: 100%;
+    a.header-btn {
+      color: @header-color;
+      padding: 9px 0 5px;
+      display: block;
+      width: 100%;
+      &:hover, &:focus {
+        background-color: @header-btn-bgcolor-hover;
+      }
+      i {
+        height: 100%;
+      }
     }
   }
 }
@@ -98,26 +142,39 @@ img {
 }
 
 #footer {
-  @bgcolor: #555;
-  background-color: @bgcolor;
+  opacity: @footer-opacity;
+  background-color: @footer-bgcolor;
   position: fixed;
   z-index: 999;
   bottom: 0;
   width: 100%;
   .pure-g {
-    > div {
-      float: left;
-    }
-  }
-  a.footer-btn {
-    display: block;
-    padding: 5px 0;
-    text-align: center;
-    &:hover, &:focus {
-      background-color: lighten(@bgcolor, 20%);
-    }
-    &.active {
-      background-color: #F17489;
+    > .pure-u-1-3 {
+      /* fix pure-u-1-3 on mobile browser */
+      &:nth-child(1) {
+        width: 33.334%;
+      }
+      &:nth-child(2) {
+        width: 33.34%;
+      }
+      &:nth-child(3) {
+        width: 33.334%;
+      }
+      .footer-box {
+        a {
+          width: 100%;
+          color: @footer-color;
+          display: block;
+          padding: 5px 0;
+          text-align: center;
+          &:hover, &:focus {
+            background-color: @footer-btn-bgcolor-hover;
+          }
+          &.active {
+            background-color: @footer-btn-bgcolor-active;
+          }
+        }
+      }
     }
   }
 }

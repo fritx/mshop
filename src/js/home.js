@@ -31,16 +31,6 @@ function showBrands() {
   }
 }
 
-/*function doSearch() {
-  var keyword = $('#search').find('input').val();
-  if (!keyword) {
-    return;
-  }
-  location.href = 'items.html' + paramsToSearch({
-    keyword: keyword
-  });
-}*/
-
 var brands, brandsOn = false;
 
 function initPage() {

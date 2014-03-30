@@ -1,10 +1,12 @@
+@import "config";
+
 #orders-div {
   ul {
     .order-li {
       margin: 6px 0 0;
       .order-box {
-        background-color: #f3f3f3;
-        border: solid 3px #eee;
+        background-color: @board-color;
+        border: solid 3px @board-border-color;
         border-radius: 4px;
         padding: 4px 1px;
         .col-box {
@@ -20,7 +22,7 @@
               margin: 10px 0 0;
             }
             i {
-              margin: 0 4px;
+              margin: 0 8px;
             }
           }
         }
@@ -33,16 +35,16 @@
           }
           .status-box {
             width: 100%;
-            color: #5eb95e;
+            color: @status-color;
             text-align: right;
             .status {
               margin-right: 12px;
             }
           }
           .message-box {
-            margin: 6px 12px 0 12px;
+            margin: 6px 12px 4px;
             .message {
-              color: #FF9966;
+              color: @message-color;
             }
           }
         }

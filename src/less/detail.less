@@ -1,3 +1,5 @@
+@import "config";
+
 #item-div {
   .img-box {
     .lazy-box {
@@ -30,16 +32,15 @@
       width: 42%;
     }
     .sales {
-      color: #5eb95e;
+      color: @status-color;
     }
   }
   .purchase-form {
-    border-top: 1px dashed #eee;
+    border-top: 1px dashed @form-border-color;
     padding-top: 14px;
     #num {
       width: 30%;
       text-align: center!important;
-      margin: 0 -3px 0;
       padding: 7px 2px;
       display: inline-block;
       position: relative;
@@ -51,6 +52,8 @@
     .delta-btn {
       position: relative;
       z-index: 8;
+      /* according to #num */
+      padding: 8px 12px;
     }
     .buttons {
       margin: 18px 0 0;
@@ -61,11 +64,9 @@
     }
   }
   .detail-box {
-    border-top: 1px dashed #eee;
+    border-top: 1px dashed @form-border-color;
     margin-top: 14px;
     font-size: 120%;
-  }
-  .detail-box {
     p {
       margin: 14px 0;
     }

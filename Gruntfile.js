@@ -75,7 +75,6 @@ module.exports = function (grunt) {
           'dist/css/_deps.css': [
             'bower_components/fontawesome/css/font-awesome.min.css',
             'bower_components/pure/base-min.css',
-            'bower_components/pure/buttons-min.css',
             'bower_components/pure/forms-nr-min.css',
             'bower_components/pure/grids-nr-min.css',
             'bower_components/pure/menus-core-min.css',
@@ -83,7 +82,6 @@ module.exports = function (grunt) {
             'bower_components/alertify.js/themes/alertify.default.css'
           ],
           'dist/css/_site.css': [
-            'src/css/pure-skin-pink.css',
             'tmp/css/main.css'
           ],
           'dist/css/home.css': 'tmp/css/home.css',

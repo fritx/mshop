@@ -1,3 +1,5 @@
+@import "config";
+
 #form-div {
   font-size: 120%;
   padding: 10px 10px 0;
@@ -7,22 +9,24 @@
   .profile-box {
     > .pure-g {
       margin: 0 0 4px;
-    }
-    label, input {
-      display: inline-block;
-    }
-    label {
-      margin: .2em 0;
-    }
-    input {
-      padding: .2em .6em !important;
+      label, input {
+        display: inline-block;
+      }
+      label {
+        /* half of input top-down border */
+        margin: 1px 0;
+        padding: .3em 0;
+      }
+      input {
+        padding: .3em .6em !important;
+      }
     }
   }
   .pay-box {
-    border-top: solid 2px #eee;
+    border-top: solid 2px @form-border-color;
     padding: 12px 0 0;
     .way {
-      color: #5eb95e;
+      color: @status-color;
     }
     .cost-box {
       margin: 6px 0 0;
@@ -30,7 +34,7 @@
     }
   }
   fieldset.submit-box {
-    border-top: solid 2px #eee;
+    border-top: solid 2px @form-border-color;
     margin: 16px 0 0;
     padding: 12px 0 0;
     input {

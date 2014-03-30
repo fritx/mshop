@@ -12,7 +12,10 @@ An online shop adapted to mobile.
 
 ## Processing
 
+- Maybe Kid.js?
+- Switch to CoffeeScript?
 - App Restructure
+- Less Vars Config
 
 ## TODO
 

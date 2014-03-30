@@ -2,15 +2,15 @@ form.pure-form
   include profile
   .pure-g.pay-box
     .pure-u-1
-      span.trailing 付款方式:
+      span.trailing 付款方式 :
       span.way 货到付款
     .pure-u-1
       .cost-box.pull-right
-        span.trailing 合计:
+        span.trailing 合计 :
         span.price ￥#{cost.toFixed(1)}
   fieldset.pure-skin-pink.submit-box
     each field in fields[1]
       input(type='text', name=field.key,
       placeholder=field.placeholder, value=field.value||'')
-    button.pure-button.pure-button-primary.submit-btn(
+    a.btn.primary.submit-btn(
     onclick='submitOrder();return false') 提交订单
