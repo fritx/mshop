@@ -5,9 +5,8 @@
     .item-li {
       margin: 6px 0 0;
       .item-box {
-        background-color: @board-color;
+        background-color: @board-bgcolor;
         border: solid 3px @board-border-color;
-        border-radius: 4px;
         padding: 1px;
         .col-box {
           padding: 2px;
@@ -25,9 +24,8 @@
               height: 16px;
               display: block;
               margin: 42px auto 0;
-              background-color: lighten(@color-theme, 15%);
-              border: solid 1px lighten(@color-theme, 5%);
-              border-radius: 2px;
+              background-color: @tick-bgcolor;
+              border: solid 1px @tick-border-color;
               padding: 0;
               &.on {
                 i {
@@ -65,7 +63,7 @@
   width: 100%;
   font-size: 120%;
   .cost-box {
-    background-color: @board-color;
+    background-color: @board-bgcolor;
     padding: 0 0 0 18px;
     height: 41px;
     line-height: 41px;

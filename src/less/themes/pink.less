@@ -1,4 +1,5 @@
-@color-theme: #f17489;
+@color-theme-base: #f17489;
+@color-theme-primary: #dd0e30;
 @color-red: #ff0e30;
 @color-green: #5eb95e;
 @color-blue: #0088dd;
@@ -19,29 +20,31 @@
 @btn-bgcolor: darken(@color-white, 10%);
 @btn-bgcolor-hover: darken(@btn-bgcolor, 3%);
 @btn-color: @body-color;
-@btn-secondary-bgcolor: lighten(@color-theme, 15%);
+@btn-secondary-bgcolor: lighten(@color-theme-base, 15%);
 @btn-secondary-bgcolor-hover: lighten(@btn-secondary-bgcolor, 2%);
 @btn-secondary-color: darken(@btn-secondary-bgcolor, 50%);
-@btn-primary-bgcolor: #dd0e30;
+@btn-primary-bgcolor: @color-theme-primary;
 @btn-primary-bgcolor-hover: darken(@btn-primary-bgcolor, 3%);
 @btn-primary-color: @color-white;
 
 @form-border-color: darken(@body-bgcolor, 15%);
 @lazy-bgcolor: darken(@body-bgcolor, 10%);
-@board-color: #f3f3f3;
-@board-border-color: darken(@board-color, 3%);
+@board-bgcolor: #f3f3f3;
+@board-border-color: darken(@board-bgcolor, 3%);
+@tick-bgcolor: lighten(@color-theme-base, 15%);
+@tick-border-color: darken(@tick-bgcolor, 30%);
 
-@nav-btn-bgcolor: lighten(@color-theme, 22%);
+@nav-btn-bgcolor: lighten(@color-theme-base, 22%);
 @nav-btn-bgcolor-hover: lighten(@nav-btn-bgcolor, 2%);
 @nav-btn-color: darken(@nav-btn-bgcolor, 26%);
 
-@header-opacity: 0.96;
-@header-bgcolor: @color-theme;
+@header-opacity: 0.94;
+@header-bgcolor: @color-theme-base;
 @header-color: @color-white;
 @header-btn-bgcolor-hover: lighten(@header-bgcolor, 8%);
 
-@footer-opacity: 0.96;
+@footer-opacity: 0.94;
 @footer-bgcolor: darken(@color-gray, 10%);
 @footer-color: @color-white;
 @footer-btn-bgcolor-hover: lighten(@footer-bgcolor, 12%);
-@footer-btn-bgcolor-active: @color-theme;
+@footer-btn-bgcolor-active: @color-theme-base;
