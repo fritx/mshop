@@ -6,16 +6,11 @@
 @color-black: #000000;
 @color-gray: #787878;
 @color-white: #ffffff;
-
 @color-price: @color-red;
 @color-status: @color-green;
 
 @body-bgcolor: @color-white;
 @body-color: lighten(@color-black, 26%);
-
-@price-color: @color-price;
-@status-color: @color-green;
-@message-color: @color-blue;
 
 @btn-bgcolor: darken(@color-white, 10%);
 @btn-bgcolor-hover: darken(@btn-bgcolor, 3%);
@@ -27,9 +22,12 @@
 @btn-primary-bgcolor-hover: darken(@btn-primary-bgcolor, 3%);
 @btn-primary-color: @color-white;
 
+@price-color: @color-price;
+@status-color: @color-green;
+@message-color: @color-blue;
 @form-border-color: darken(@body-bgcolor, 15%);
 @lazy-bgcolor: darken(@body-bgcolor, 10%);
-@board-bgcolor: #f3f3f3;
+@board-bgcolor: darken(@body-bgcolor, 4%);
 @board-border-color: darken(@board-bgcolor, 3%);
 @tick-bgcolor: lighten(@color-theme-base, 15%);
 @tick-border-color: darken(@tick-bgcolor, 30%);
@@ -38,12 +36,19 @@
 @nav-btn-bgcolor-hover: lighten(@nav-btn-bgcolor, 2%);
 @nav-btn-color: darken(@nav-btn-bgcolor, 26%);
 
-@header-opacity: 0.94;
+@menu-bgcolor: lighten(@nav-btn-bgcolor-hover, 3%);
+@menu-border-color: darken(@menu-bgcolor, 3%);
+@menu-btn-bgcolor: @menu-bgcolor;
+@menu-btn-bgcolor-hover: darken(@menu-btn-bgcolor, 2%);
+@menu-color: darken(@nav-btn-color, 24%);
+@menu-title-color: darken(@menu-color, 10%);
+
+@header-opacity: 0.92;
 @header-bgcolor: @color-theme-base;
 @header-color: @color-white;
 @header-btn-bgcolor-hover: lighten(@header-bgcolor, 8%);
 
-@footer-opacity: 0.94;
+@footer-opacity: 0.92;
 @footer-bgcolor: darken(@color-gray, 10%);
 @footer-color: @color-white;
 @footer-btn-bgcolor-hover: lighten(@footer-bgcolor, 12%);

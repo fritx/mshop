@@ -44,9 +44,9 @@ function loadReady() {
 function toggleFooter(show) {
   var $footer = $('#footer');
   if (show) {
-    $footer.show();
+    $footer.removeClass('none');
   } else {
-    $footer.hide();
+    $footer.addClass('none');
   }
 }
 function makeFooterToggle() {
@@ -57,6 +57,8 @@ function makeFooterToggle() {
     if (h < 0.7 * H) {
       toggleFooter(false);
     } else {
+      // fix weixin keyboard toggle bug
+      $window.scrollTop($window.scrollTop() - 1);
       toggleFooter(true);
     }
     H = h;
