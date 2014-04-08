@@ -4,7 +4,7 @@ function fetchShop(cb) {
     // TODO: php side has no banner yet
     shop.banner = shop.banner || (shop.banners && shop.banners[0]) || {
       alt: 'Great Me',
-      src: 'content/shop/banners/2.jpg',
+      src: 'content/shop/banners/0.jpg',
       url: null
     };
     cb({
@@ -161,7 +161,7 @@ function parseItem(dItem) {
     sales: +dItem.sales,
     stocks: +dItem.kucun,
     promotingPrice: dItem.low_price ? +dItem.low_price : null,
-    ourPrice: +dItem.middle_price,
+    shopPrice: +dItem.middle_price,
     marketPrice: +dItem.high_price
   };
   calcPrice(item);

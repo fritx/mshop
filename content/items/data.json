@@ -10,7 +10,7 @@
     "sales": 3245,
     "stocks": 199,
     "marketPrice": 99.9,
-    "ourPrice": 79.9,
+    "shopPrice": 79.9,
     "promotingPrice": 69.9
   },
   {
@@ -24,7 +24,7 @@
     "sales": 23,
     "stocks": 199,
     "marketPrice": 99.9,
-    "ourPrice": 79.9,
+    "shopPrice": 79.9,
     "promotingPrice": null
   },
   {
@@ -38,7 +38,7 @@
     "sales": 2531,
     "stocks": 199,
     "marketPrice": 99.9,
-    "ourPrice": 79.9,
+    "shopPrice": 79.9,
     "promotingPrice": 349.9
   },
   {
@@ -52,7 +52,7 @@
     "sales": 322,
     "stocks": 199,
     "marketPrice": 99.9,
-    "ourPrice": 79.9,
+    "shopPrice": 79.9,
     "promotingPrice": null
   },
   {
@@ -66,7 +66,7 @@
     "sales": 2531,
     "stocks": 0,
     "marketPrice": 99.9,
-    "ourPrice": 79.9,
+    "shopPrice": 79.9,
     "promotingPrice": 269.9
   }
 ]
