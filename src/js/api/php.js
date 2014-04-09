@@ -77,6 +77,7 @@ function fetchCart(cb) {
       var xItem = _.extend(cItem, {
         title: item.title,
         image: item.image,
+        onSale: item.onSale,
         _price: item._price
       });
       next(null, xItem);
@@ -128,11 +129,11 @@ function fetchOrdersList(cb) {
   });
 }
 function checkOnSale(oItems, cb) {
-  async.every(oItems, function(oItem, next){
-    fetchProduct({ id: oItem.id }, function(item){
+  async.every(oItems, function (oItem, next) {
+    fetchProduct({ id: oItem.id }, function (item) {
       next(item.onSale);
     });
-  }, function(ok){
+  }, function (ok) {
     cb(ok);
   });
 }
@@ -152,8 +153,8 @@ function saveOrder(oItems, profile, extra, cb) {
       products_id: _.pluck(oItems, 'id').join(','),
       products_amounts: _.pluck(oItems, 'num').join(','),
       message: extra.message
-    }, function (str) {
-      cb(str === 'ok');
+    }, function (data) {
+      cb(data === 'ok');
     });
   });
 }
@@ -168,7 +169,7 @@ function parseItem(dItem) {
     image: dItem.small_url,
     imageLarge: dItem.large_url,
     sales: +dItem.sales,
-    onSale: !!dItem.on_sale,
+    onSale: dItem.on_sale === '1',
     promotingPrice: dItem.low_price ? +dItem.low_price : null,
     shopPrice: +dItem.middle_price,
     marketPrice: +dItem.high_price
@@ -177,8 +178,14 @@ function parseItem(dItem) {
   return item;
 }
 function fetchAreasList(cb) {
-  fetchShop(function (shop) {
-    cb(shop.areas);
+  $.get('../getarealist.php', function (data) {
+    var areas = JSON.parse(data);
+    cb(_.map(areas, function (area) {
+      return {
+        id: +area.id,
+        title: area.areaname
+      };
+    }));
   });
 }
 function saveArea(area, cb) {
@@ -186,6 +193,7 @@ function saveArea(area, cb) {
   store.set('orderProfile', _.extend(profile, {
     area: area.title
   }));
-  cb();
-  //$.post('../setarea.php', { area_id: area.id }, cb);
+  $.post('../setarea.php', { area_id: area.id }, function (data) {
+    cb(!!data);
+  });
 }

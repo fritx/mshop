@@ -1,5 +1,8 @@
 //- image min-height 200px
-.img-box
+- var classes = []
+if !item.onSale
+  - classes.push('sold-out')
+.img-box(class=classes)
   .lazy-box.unloaded
     img.lazy(src=transparent, data-original=item.imageLarge||false)
 .desc-box

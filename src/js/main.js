@@ -137,7 +137,12 @@ function initPage(cb) {
       throw new Error('Invalid area.');
     }
 
-    saveArea(area, function () {
+    saveArea(area, function (ok) {
+      if (!ok) {
+        notify('你的地区信息不对啊!');
+        throw new Error('Invalid area.');
+      }
+
       _.templateSettings = {
         evaluate: /{{([\s\S]+?)}}/g,
         interpolate: /{{=([\s\S]+?)}}/g,

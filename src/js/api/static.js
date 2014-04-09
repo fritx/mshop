@@ -66,6 +66,7 @@ function fetchCart(cb) {
       var xItem = _.extend(cItem, {
         title: dItem.title,
         image: dItem.image,
+        onSale: dItem.onSale,
         _price: dItem._price
       });
       return xItem;
@@ -141,5 +142,5 @@ function saveArea(area, cb) {
   store.set('orderProfile', _.extend(profile, {
     area: area.title
   }));
-  cb();
+  cb(true);
 }

@@ -3,7 +3,10 @@ ul.pure-g
     li.pure-u-1-2.item-li
       a.item-box(href='detail.html?id=#{item.id}')
         .item
-          .img-box
+          - var classes = []
+          if !item.onSale
+            - classes.push('sold-out')
+          .img-box(class=classes)
             //- img-box square 1:1
             .lazy-box.unloaded
               .square
