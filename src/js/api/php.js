@@ -127,6 +127,15 @@ function fetchOrdersList(cb) {
     cb(_.compact(xOrders));
   });
 }
+function checkOnSale(oItems, cb) {
+  async.every(oItems, function(oItem, next){
+    fetchProduct({ id: oItem.id }, function(item){
+      next(item.onSale);
+    });
+  }, function(ok){
+    cb(ok);
+  });
+}
 function saveOrder(oItems, profile, extra, cb) {
   var orders = store.get('myOrders');
   orders.push({
@@ -143,8 +152,8 @@ function saveOrder(oItems, profile, extra, cb) {
       products_id: _.pluck(oItems, 'id').join(','),
       products_amounts: _.pluck(oItems, 'num').join(','),
       message: extra.message
-    }, function () {
-      cb();
+    }, function (str) {
+      cb(str === 'ok');
     });
   });
 }
@@ -159,7 +168,7 @@ function parseItem(dItem) {
     image: dItem.small_url,
     imageLarge: dItem.large_url,
     sales: +dItem.sales,
-    stocks: +dItem.kucun,
+    onSale: !!dItem.on_sale,
     promotingPrice: dItem.low_price ? +dItem.low_price : null,
     shopPrice: +dItem.middle_price,
     marketPrice: +dItem.high_price
@@ -168,25 +177,9 @@ function parseItem(dItem) {
   return item;
 }
 function fetchAreasList(cb) {
-  /*$.get('../getarealist.php', function (areas) {
-    areas = JSON.parse(areas);
-    cb(_.map(areas, function (area) {
-      return {
-        id: +area.id,
-        title: area.areaname
-      };
-    }));
-  });*/
-  cb([
-    {
-      "id": 1,
-      "title": "五邑大学"
-    },
-    {
-      "id": 2,
-      "title": "江门职业"
-    }
-  ]);
+  fetchShop(function (shop) {
+    cb(shop.areas);
+  });
 }
 function saveArea(area, cb) {
   var profile = store.get('orderProfile');

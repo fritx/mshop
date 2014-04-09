@@ -18,9 +18,9 @@ function addToCart(silient, cb) {
     return notify('宝贝数量至少为1');
   }
   $num.val(1);
-  /*if (item.stocks <= 0) {
-   return notify('此商品正在火速补货中，明天才可以下单哦~');
-   }*/
+  if (!item.onSale) {
+    return notify('此商品正在补货中，明天才能购买哦~');
+  }
 
   var items = store.get('cartItems');
   var itemIn = _.findWhere(items, { id: id });

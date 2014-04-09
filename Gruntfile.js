@@ -47,7 +47,7 @@ module.exports = function (grunt) {
       css: {
         options: {
           modifyVars: {
-            theme: '"pink"'
+            theme: '"<%= locals.theme %>"'
           }
         },
         files: {

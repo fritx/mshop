@@ -14,7 +14,8 @@ An online shop adapted to mobile.
 
 - Maybe Kid.js?
 - App Restructure
-- Less Vars Config
+- Style Config
+- Message Config
 
 ## TODO
 

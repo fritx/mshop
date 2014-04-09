@@ -13,7 +13,7 @@ function showOrder() {
     }));
 }
 
-function prepareOrder() {
+function prepareOrder(cb) {
   $('.tick').each(function (i, el) {
     var $tick = $(el);
     var $item = $tick.closest('.item-box');
@@ -27,6 +27,9 @@ function prepareOrder() {
   });
   saveCart(xItems, function () {
     showOrder();
+    if (cb) {
+      cb();
+    }
   });
 }
 
@@ -63,18 +66,24 @@ function removeFromCart() {
 }
 
 function gotoOrder() {
-  var checkedItems = _.where(xItems, { checked: true });
-  if (checkedItems.length <= 0) {
-    return notify('没有勾选的宝贝');
-  }
-  if (_.some(checkedItems, function (item) {
-    return item.num <= 0;
-  })) {
-    return notify('宝贝数量至少为1');
-  }
-  prepareOrder();
-  saveCurrOrder(checkedItems, function () {
-    location.href = 'order.html';
+  prepareOrder(function () {
+    var checkedItems = _.where(xItems, { checked: true });
+    if (checkedItems.length <= 0) {
+      return notify('没有勾选的宝贝');
+    }
+    if (_.some(checkedItems, function (item) {
+      return item.num <= 0;
+    })) {
+      return notify('宝贝数量至少为1');
+    }
+    checkOnSale(checkedItems, function (ok) {
+      if (!ok) {
+        return notify('部分商品仍在补货中，可以先购买其他的~');
+      }
+      saveCurrOrder(checkedItems, function () {
+        location.href = 'order.html';
+      });
+    });
   });
 }
 

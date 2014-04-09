@@ -70,6 +70,14 @@ function emptyCurrOrder(cb) {
   });
 }
 
+function toggleButton(ok) {
+  if (ok) {
+    $('.submit-btn').removeAttr('disabled');
+  } else {
+    $('.submit-btn').attr('disabled', true);
+  }
+}
+
 function submitOrder() {
   var profile = _.reduce($('.profile-box').find('[name]'), function (memo, el) {
     var $el = $(el);
@@ -87,13 +95,17 @@ function submitOrder() {
     return notify('订单填写不完整');
   }
   // disable submit button
-  $('.submit-btn').attr('disabled', true);
+  toggleButton(false);
   ask('确定提交订单?', function (ok) {
     if (!ok) {
-      $('.submit-btn').removeAttr('disabled');
+      toggleButton(true);
       return;
     }
-    saveOrder(oItems, profile, extra, function () {
+    saveOrder(oItems, profile, extra, function (ok) {
+      if (!ok) {
+        toggleButton(true);
+        return notify('部分商品仍在补货中，可以先购买其他的~');
+      }
       emptyCurrOrder(function () {
         notify('订单提交成功', 'orders.html');
       });

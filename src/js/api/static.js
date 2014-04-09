@@ -110,6 +110,14 @@ function fetchOrdersList(cb) {
     cb(_.compact(xOrders));
   });
 }
+function checkOnSale(oItems, cb) {
+  fetchProductsList(null, function (items) {
+    cb(_.every(oItems, function(oItem){
+      var item = _.findWhere(items, { id: oItem.id });
+      return item.onSale;
+    }));
+  });
+}
 function saveOrder(oItems, profile, extra, cb) {
   var orders = store.get('myOrders');
   orders.push({
@@ -120,7 +128,7 @@ function saveOrder(oItems, profile, extra, cb) {
   store.set('myOrders', orders);
   saveOrderProfile(profile, function () {
     console.log('下单:', oItems, profile, extra);
-    cb();
+    cb(true);
   });
 }
 function fetchAreasList(cb) {

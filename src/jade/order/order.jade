@@ -12,5 +12,5 @@ form.pure-form
     each field in fields[1]
       input(type='text', name=field.key,
       placeholder=field.placeholder, value=field.value||'')
-    a.btn.primary.submit-btn(
+    button.btn.primary.submit-btn(
     onclick='submitOrder();return false') 提交订单
