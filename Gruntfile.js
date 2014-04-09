@@ -3,7 +3,6 @@
  */
 
 var path = require('path');
-var _ = require('underscore');
 
 module.exports = function (grunt) {
   grunt.initConfig({
@@ -246,16 +245,6 @@ module.exports = function (grunt) {
           'dist/orders.html': 'tmp/html/orders.html'
         }
       }
-    },
-
-    open: {
-      wait: {
-        options: {
-          // listen on server task
-          openOn: 'server:listen'
-        },
-        url: 'http://127.0.0.1:<%= locals.port %>/'
-      }
     }
   });
 
@@ -287,11 +276,8 @@ module.exports = function (grunt) {
       grunt.event.emit('server:listen');
     });
   });
-  grunt.registerTask('start', [
-    'open:wait', 'server'
-  ]);
 
   grunt.registerTask('default', [
-    'build', 'start'
+    'build', 'server'
   ]);
 };

@@ -1,12 +1,12 @@
 {
   "name": "mshop",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "An online shop adapted to mobile.",
   "homepage": "https://github.com/fritx/mshop",
   "author": "fritx <uxfritz@163.com> (https://github.com/fritx)",
   "scripts": {
     "install": "npm i -g grunt-cli",
-    "start": "grunt start"
+    "start": "grunt server"
   },
   "dependencies": {
     "express": "^3.5.0",
@@ -18,9 +18,7 @@
     "grunt-contrib-jade": "^0.11.0",
     "grunt-contrib-less": "^0.10.0",
     "grunt-contrib-uglify": "~0.4.0",
-    "grunt-open": "^0.2.3",
-    "load-grunt-tasks": "^0.4.0",
-    "underscore": "^1.6.0"
+    "load-grunt-tasks": "^0.4.0"
   },
   "devDependencies": {
     "grunt-contrib-csslint": "^0.2.0",
