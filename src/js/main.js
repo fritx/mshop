@@ -83,7 +83,7 @@ function ask(msg, cb) {
 function calcPrice(item) {
   item._price = item.promotingPrice != null ?
     item.promotingPrice :
-    item.ourPrice;
+    item.shopPrice;
 }
 function fetchOrderProfile(cb) {
   var profile = store.get('orderProfile');

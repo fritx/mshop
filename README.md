@@ -21,9 +21,9 @@ An online shop adapted to mobile.
 - Grunt Watch
 - YUI Docs
 - PhantomJS Test?
-- Hold the Server Process (Grunt-)
+- Hold the Server Process
 - Switch to AMD/CMD?
-- Better Non-Mobile Compatibility
+- Better Desktop Compatibility
 
 ## License
 
