@@ -45,6 +45,11 @@ module.exports = function (grunt) {
 
     less: {
       css: {
+        options: {
+          modifyVars: {
+            theme: '"pink"'
+          }
+        },
         files: {
           'tmp/css/main.css': 'src/less/main.less',
           'tmp/css/home.css': 'src/less/home.less',
