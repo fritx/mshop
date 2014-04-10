@@ -4,7 +4,7 @@ ul.pure-g
       a.item-box(href='detail.html?id=#{item.id}')
         .item
           - var classes = []
-          if !item.onSale
+          if !(item.onSale && item.store > 0)
             - classes.push('sold-out')
           .img-box(class=classes)
             //- img-box square 1:1

@@ -77,6 +77,7 @@ function fetchCart(cb) {
       var xItem = _.extend(cItem, {
         title: item.title,
         image: item.image,
+        store: item.store,
         onSale: item.onSale,
         _price: item._price
       });
@@ -128,10 +129,10 @@ function fetchOrdersList(cb) {
     cb(_.compact(xOrders));
   });
 }
-function checkOnSale(oItems, cb) {
+function checkAllOnSale(oItems, cb) {
   async.every(oItems, function (oItem, next) {
     fetchProduct({ id: oItem.id }, function (item) {
-      next(item.onSale);
+      next(checkOnSale(item));
     });
   }, function (ok) {
     cb(ok);
@@ -169,6 +170,7 @@ function parseItem(dItem) {
     image: dItem.small_url,
     imageLarge: dItem.large_url,
     sales: +dItem.sales,
+    store: +dItem.kucun,
     onSale: dItem.on_sale === '1',
     promotingPrice: dItem.low_price ? +dItem.low_price : null,
     shopPrice: +dItem.middle_price,

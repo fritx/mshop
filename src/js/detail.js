@@ -18,7 +18,7 @@ function addToCart(silient, cb) {
     return notify('宝贝数量至少为1');
   }
   $num.val(1);
-  if (!item.onSale) {
+  if (!checkOnSale(item)) {
     return notify('此商品正在补货中，明天才能购买哦~');
   }
 

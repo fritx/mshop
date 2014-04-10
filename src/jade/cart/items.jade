@@ -14,7 +14,7 @@ ul.pure-g
             .col-box
               a(href='detail.html?id=#{item.id}')
                 - var classes = []
-                if !item.onSale
+                if !(item.onSale && item.store > 0)
                   - classes.push('sold-out')
                 .img-box(class=classes)
                   .square

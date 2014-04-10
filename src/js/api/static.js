@@ -66,6 +66,7 @@ function fetchCart(cb) {
       var xItem = _.extend(cItem, {
         title: dItem.title,
         image: dItem.image,
+        store: dItem.store,
         onSale: dItem.onSale,
         _price: dItem._price
       });
@@ -111,11 +112,11 @@ function fetchOrdersList(cb) {
     cb(_.compact(xOrders));
   });
 }
-function checkOnSale(oItems, cb) {
+function checkAllOnSale(oItems, cb) {
   fetchProductsList(null, function (items) {
     cb(_.every(oItems, function(oItem){
       var item = _.findWhere(items, { id: oItem.id });
-      return item.onSale;
+      return checkOnSale(item);
     }));
   });
 }

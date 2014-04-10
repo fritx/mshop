@@ -76,7 +76,7 @@ function gotoOrder() {
     })) {
       return notify('宝贝数量至少为1');
     }
-    checkOnSale(checkedItems, function (ok) {
+    checkAllOnSale(checkedItems, function (ok) {
       if (!ok) {
         return notify('部分商品仍在补货中，可以先购买其他的~');
       }

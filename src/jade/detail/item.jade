@@ -1,6 +1,6 @@
 //- image min-height 200px
 - var classes = []
-if !item.onSale
+if !(item.onSale && item.store > 0)
   - classes.push('sold-out')
 .img-box(class=classes)
   .lazy-box.unloaded

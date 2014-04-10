@@ -85,6 +85,9 @@ function calcPrice(item) {
     item.promotingPrice :
     item.shopPrice;
 }
+function checkOnSale(item) {
+  return item.onSale && item.store > 0;
+}
 function fetchOrderProfile(cb) {
   var profile = store.get('orderProfile');
   cb(profile);
