@@ -11,7 +11,7 @@ ul.pure-g
               .square
                 .square-inner
                   img.lazy(data-original=item.image||false)
-                - var cover
+                - var cover = false
                 if !item.onSale
                   - cover = offsale
                 else if item.store <= 0

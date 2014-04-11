@@ -74,7 +74,7 @@ function gotoOrder() {
     if (_.some(checkedItems, function (item) {
       return item.num <= 0;
     })) {
-      return notify('宝贝数量至少为1');
+      return notify('宝贝数量至少为 1 件');
     }
     checkAllOnSale(checkedItems, function (ok) {
       if (!ok) {

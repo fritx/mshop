@@ -15,11 +15,11 @@ function addToCart(silient, cb) {
   var $num = $('#num');
   var num = +$num.val();
   if (isNaN(num) || num <= 0) {
-    return notify('宝贝数量至少为1');
+    return notify('宝贝数量至少为 1 件');
   }
   $num.val(1);
-  if (!checkOnSale(item, num)) {
-    return notify('此商品正在补货中，明天才能购买哦~');
+  if (!item.onSale || num > item.store) {
+    return notify('正在补货中，明天才可以购买哦~');
   }
 
   var items = store.get('cartItems');
