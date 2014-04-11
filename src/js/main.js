@@ -99,15 +99,15 @@ function saveOrderProfile(profile, cb) {
   cb();
 }
 function saveCart(xItems, cb) {
-  store.set('cartItems', _.map(xItems, function (xItem) {
+  store.set('cartItems', _(xItems).chain().map(function (xItem) {
     return _.pick(xItem, ['id', 'num', 'checked']);
-  }));
+  }).sortBy('id').value());
   cb();
 }
 function saveCurrOrder(xItems, cb) {
-  store.set('currOrderItems', _.map(xItems, function (xItem) {
+  store.set('currOrderItems', _(xItems).chain().map(function (xItem) {
     return _.pick(xItem, ['id', 'num']);
-  }));
+  }).sortBy('id').value());
   cb();
 }
 
