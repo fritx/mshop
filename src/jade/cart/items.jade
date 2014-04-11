@@ -1,4 +1,6 @@
 ul.pure-g
+  - var offsale = 'images/off-sale.png'
+  - var soldout = 'images/sold-out.png'
   each item in items
     li.pure-u-1.item-li
       .item-box(data-id=item.id)
@@ -13,14 +15,19 @@ ul.pure-g
           .pure-u-1-3
             .col-box
               a(href='detail.html?id=#{item.id}')
-                - var classes = []
-                if !(item.onSale && item.store > 0)
-                  - classes.push('sold-out')
-                .img-box(class=classes)
-                  .square
-                    .square-inner
-                      .lazy-box.unloaded
-                        img.lazy(src=transparent, data-original=item.image||false)
+                .img-box
+                  .lazy-box.unloaded
+                    .square
+                      .square-inner
+                        img.lazy(data-original=item.image||false)
+                      - var cover
+                      if !item.onSale
+                        - cover = offsale
+                      else if item.store <= 0
+                        - cover = soldout
+                      if cover
+                        .square-inner
+                          img(src=cover)
           .pure-u-7-12
             .col-box.desc-box
               .title= item.title

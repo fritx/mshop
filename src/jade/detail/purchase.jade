@@ -1,13 +1,25 @@
 form.pure-form.purchase-form
+  - var offsalebtn = 'images/off-sale-btn.png'
+  - var soldoutbtn = 'images/sold-out-btn.png'
+  - var cover
+  if !item.onSale
+    - cover = offsalebtn
+  else if item.store <= 0
+    - cover = soldoutbtn
+  - var disabled = !!cover
   .line
     label.label(for='num') 数量
-    button.btn.delta-btn(onclick='deltaNum(-1);return false')
+    button.btn.delta-btn(onclick='deltaNum(-1);return false', disabled=disabled)
       i.fa.fa-minus
-    input#num(type='text', value='1')
-    button.btn.delta-btn(onclick='deltaNum(1);return false')
+    input#num(type='text', value='1', readonly=disabled)
+    button.btn.delta-btn(onclick='deltaNum(1);return false', disabled=disabled)
       i.fa.fa-plus
   .pure-g.buttons
-    .pure-u-1-2
-      button.btn.secondary(onclick='addToCart();return false') 加入购物车
-    .pure-u-1-2
-      button.btn.primary.pull-right(onclick='gotoCart();return false') 立即购买
+    if cover
+      .pure-u-1
+        img(src=cover)
+    else
+      .pure-u-1-2
+        button.btn.secondary(onclick='addToCart();return false') 加入购物车
+      .pure-u-1-2
+        button.btn.primary.pull-right(onclick='gotoCart();return false') 立即购买

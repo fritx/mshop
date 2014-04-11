@@ -1,10 +1,15 @@
 //- image min-height 200px
-- var classes = []
-if !(item.onSale && item.store > 0)
-  - classes.push('sold-out')
-.img-box(class=classes)
+.img-box
   .lazy-box.unloaded
-    img.lazy(src=transparent, data-original=item.imageLarge||false)
+    - var offsale = 'images/off-sale.png'
+    - var soldout = 'images/sold-out.png'
+    if !item.onSale
+      - cover = offsale
+    else if item.store <= 0
+      - cover = soldout
+    if cover
+      img.cover(src=cover)
+    img.lazy(data-original=item.imageLarge||false)
 .desc-box
   h3.title= item.title
   .pure-g

@@ -230,11 +230,6 @@ module.exports = function (grunt) {
         }
       }
     },
-    htmllint: {
-      html: {
-        src: 'tmp/html/*.html'
-      }
-    },
     htmlmin: {
       html: {
         options: {
@@ -258,8 +253,7 @@ module.exports = function (grunt) {
   grunt.registerTask('clear', ['clean:tmp']);
   grunt.registerTask('check', [
     'clean', 'jshint:json',
-    'less', 'csslint', 'jshint:js',
-    'jade', 'htmllint'
+    'less', 'csslint', 'jshint:js'
   ]);
 
   grunt.registerTask('build', [
