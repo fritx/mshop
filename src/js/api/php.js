@@ -132,7 +132,7 @@ function fetchOrdersList(cb) {
 function checkAllOnSale(oItems, cb) {
   async.every(oItems, function (oItem, next) {
     fetchProduct({ id: oItem.id }, function (item) {
-      next(checkOnSale(item));
+      next(checkOnSale(item, oItem.num));
     });
   }, function (ok) {
     cb(ok);

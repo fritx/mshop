@@ -116,7 +116,7 @@ function checkAllOnSale(oItems, cb) {
   fetchProductsList(null, function (items) {
     cb(_.every(oItems, function(oItem){
       var item = _.findWhere(items, { id: oItem.id });
-      return checkOnSale(item);
+      return checkOnSale(item, oItem.num);
     }));
   });
 }
