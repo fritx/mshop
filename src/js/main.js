@@ -1,5 +1,7 @@
 function searchToParams(search) {
-  search = search || location.href;
+  if (arguments.length === 0) {
+    search = location.href;
+  }
   var pat = /([^?=&#]*)=([^?=&#]+)/g, params = {};
   decodeURIComponent(search)
     .replace(pat, function (a, b, c) {
