@@ -25,6 +25,11 @@ initPage(function () {
 
     /* load orders */
     fetchOrdersList(function (orders) {
+      // filter orders
+      orders = _.filter(orders, function (order) {
+        return order.items.length > 0;
+      });
+
       if (orders.length <= 0) {
         return notify('暂时没有订单', true);
       }
