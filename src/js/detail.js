@@ -44,12 +44,11 @@ function addToCart(silient, cb) {
 
 function gotoCart() {
   addToCart(true, function () {
-    location.href = 'cart.html';
+    link('cart.html');
   });
 }
 
 /* parse parameters */
-var params = searchToParams(location.href);
 var id = +params.id;
 var item;
 

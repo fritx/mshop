@@ -81,7 +81,7 @@ function gotoOrder() {
         return notify('部分商品仍在补货中，可以先购买其他的~');
       }
       saveCurrOrder(checkedItems, function () {
-        location.href = 'order.html';
+        link('order.html');
       });
     });
   });

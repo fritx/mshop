@@ -13,7 +13,6 @@ function valToSign(val) {
 }
 
 /* parse parameters */
-var params = searchToParams(location.href);
 var brand = params.brand || null,
   tags = params.tags || null,
   keyword = params.keyword || null;
@@ -45,8 +44,7 @@ initPage(function () {
         if (current) {
           newOrderBy = valToSign(-1 * orderVal) + dataKey;
         }
-        var newParams = _.extend({}, params, { orderBy: newOrderBy });
-        location.href = paramsToSearch(newParams);
+        link(location.href, { orderBy: newOrderBy });
       });
     });
 

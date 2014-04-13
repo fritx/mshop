@@ -1,4 +1,5 @@
 function searchToParams(search) {
+  search = search || location.href;
   var pat = /([^?=&#]*)=([^?=&#]+)/g, params = {};
   decodeURIComponent(search)
     .replace(pat, function (a, b, c) {
@@ -65,6 +66,16 @@ function makeFooterToggle() {
   }, 300));
 }
 
+function link(href, _params) {
+  var matched = /^([^\?]*)(.*)$/.exec(href);
+  var path = matched[1];
+  var search = matched[2];
+  var newParams = searchToParams(search);
+  _.extend(newParams, _params);
+  // prepend area
+  newParams = _.extend({ area: area.id }, newParams);
+  location.href = path + paramsToSearch(newParams);
+}
 function notify(msg, back) {
   // message
   alertify.alert(msg, function () {
@@ -72,7 +83,7 @@ function notify(msg, back) {
     if (back === true) {
       history.back();
     } else if (_.isString(back)) {
-      location.href = back;
+      link(back);
     }
   });
 }
@@ -117,7 +128,7 @@ function setTitle(title, shortTitle) {
 }
 
 /* init */
-var params = searchToParams(location.href);
+var params = searchToParams();
 var area;
 
 function initPage(cb) {
@@ -130,6 +141,12 @@ function initPage(cb) {
   store.set('currOrderItems', store.get('currOrderItems') || []);
   store.set('orderProfile', store.get('orderProfile') || {});
   store.set('myOrders', store.get('myOrders') || []);
+
+  $(document).delegate('[href]', 'click', function (event) {
+    event.preventDefault();
+    link($(this).attr('href'));
+    return false;
+  });
 
   fetchAreasList(function (areas) {
     var profile = store.get('orderProfile');
