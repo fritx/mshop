@@ -79,6 +79,8 @@ function toggleButton(ok) {
 }
 
 function submitOrder() {
+  // disable submit button
+  toggleButton(false);
   var profile = _.reduce($('.profile-box').find('[name]'), function (memo, el) {
     var $el = $(el);
     memo[$el.attr('name')] = $el.val();
@@ -92,10 +94,9 @@ function submitOrder() {
   if (_.some(['area', 'name', 'tel', 'block', 'flat'], function (key) {
     return profile[key] === '';
   })) {
+    toggleButton(true);
     return notify('订单填写不完整');
   }
-  // disable submit button
-  toggleButton(false);
   ask('确定提交订单?', function (ok) {
     if (!ok) {
       toggleButton(true);
