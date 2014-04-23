@@ -12,13 +12,13 @@ An online shop adapted to mobile.
 
 ## Screenshots
 
-<img width="180" src="screenshots/Screenshot_2014-04-13-07-55-21.jpeg"> &nbsp; <img width="180" src="screenshots/Screenshot_2014-04-13-07-56-07.jpeg"> &nbsp; <img width="180" src="screenshots/Screenshot_2014-04-13-07-56-33.jpeg"> &nbsp; <img width="180" src="screenshots/Screenshot_2014-04-13-07-57-55.jpeg">
+<img width="160" src="screenshots/Screenshot_2014-04-13-07-55-21.jpeg"> &nbsp; <img width="160" src="screenshots/Screenshot_2014-04-13-07-56-07.jpeg"> &nbsp; <img width="160" src="screenshots/Screenshot_2014-04-13-07-56-33.jpeg"> &nbsp; <img width="160" src="screenshots/Screenshot_2014-04-13-07-57-55.jpeg">
 
-<img width="180" src="screenshots/Screenshot_2014-04-13-07-58-36.jpeg"> &nbsp; <img width="180" src="screenshots/Screenshot_2014-04-13-08-03-28.jpeg"> &nbsp; <img width="180" src="screenshots/Screenshot_2014-04-13-08-03-41.jpeg"> &nbsp; <img width="180" src="screenshots/Screenshot_2014-04-13-08-03-47.jpeg">
+<img width="160" src="screenshots/Screenshot_2014-04-13-07-58-36.jpeg"> &nbsp; <img width="160" src="screenshots/Screenshot_2014-04-13-08-03-28.jpeg"> &nbsp; <img width="160" src="screenshots/Screenshot_2014-04-13-08-03-41.jpeg"> &nbsp; <img width="160" src="screenshots/Screenshot_2014-04-13-08-03-47.jpeg">
 
-<img width="180" src="screenshots/Screenshot_2014-04-13-08-05-10.jpeg"> &nbsp; <img width="180" src="screenshots/Screenshot_2014-04-13-08-07-54.jpeg"> &nbsp; <img width="180" src="screenshots/Screenshot_2014-04-13-08-08-42.jpeg"> &nbsp; <img width="180" src="screenshots/Screenshot_2014-04-13-08-17-16.jpeg">
+<img width="160" src="screenshots/Screenshot_2014-04-13-08-05-10.jpeg"> &nbsp; <img width="160" src="screenshots/Screenshot_2014-04-13-08-07-54.jpeg"> &nbsp; <img width="160" src="screenshots/Screenshot_2014-04-13-08-08-42.jpeg"> &nbsp; <img width="160" src="screenshots/Screenshot_2014-04-13-08-17-16.jpeg">
 
-<img width="180" src="screenshots/Screenshot_2014-04-13-08-17-27.jpeg"> &nbsp; <img width="180" src="screenshots/Screenshot_2014-04-13-08-17-49.jpeg"> &nbsp; <img width="180" src="screenshots/Screenshot_2014-04-13-08-17-57.jpeg"> &nbsp; <img width="180" src="screenshots/Screenshot_2014-04-13-08-18-04.jpeg">
+<img width="160" src="screenshots/Screenshot_2014-04-13-08-17-27.jpeg"> &nbsp; <img width="160" src="screenshots/Screenshot_2014-04-13-08-17-49.jpeg"> &nbsp; <img width="160" src="screenshots/Screenshot_2014-04-13-08-17-57.jpeg"> &nbsp; <img width="160" src="screenshots/Screenshot_2014-04-13-08-18-04.jpeg">
 
 More from [screenshots/](screenshots/)
 
