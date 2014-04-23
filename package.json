@@ -1,6 +1,6 @@
 {
   "name": "mshop",
-  "version": "0.7.4",
+  "version": "0.7.5",
   "description": "An online shop adapted to mobile.",
   "homepage": "https://github.com/fritx/mshop",
   "author": "fritx <uxfritz@163.com> (https://github.com/fritx)",
@@ -31,10 +31,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:weixinjs/mshop.git"
-  },
-  "bugs": {
-    "url": "https://github.com/fritx/mshop/issues"
+    "url": "git@github.com:fritx/mshop.git"
   },
   "license": "MIT"
 }
