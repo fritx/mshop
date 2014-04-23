@@ -158,6 +158,9 @@ function initPage(cb) {
       notify('你的地区信息不对啊!');
       throw new Error('Invalid area.');
     }
+    if (!params.area) {
+      link(location.href);
+    }
 
     saveArea(area, function (ok) {
       if (!ok) {
