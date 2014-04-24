@@ -112,6 +112,7 @@ module.exports = function (grunt) {
         },
         src: [
           'Gruntfile.js',
+          'tools/**/*.js',
           'src/js/**/*.js'
         ]
       }
@@ -265,14 +266,12 @@ module.exports = function (grunt) {
   grunt.registerTask('server', function () {
     this.async();
     var port = grunt.config('locals.port');
-    var server = require('./server');
+    var server = require('./tools/server');
     server.listen(port, function (err) {
       if (err) {
         return grunt.fail.warn(err);
       }
       grunt.log.writeln('Server started.');
-      // trigger for open task
-      grunt.event.emit('server:listen');
     });
   });
 
