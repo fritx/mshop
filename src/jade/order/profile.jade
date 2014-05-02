@@ -1,8 +1,14 @@
 fieldset.profile-box
   each field in fields[0]
     .pure-g
-      .pure-u-1-3.label-box
+      .pure-u-1-3
         label= field.title
-      .pure-u-2-3.input-box
-        input(type='text', name=field.key,
-        value=field.value||'', readonly=field.readonly)
+      .pure-u-2-3
+        if field.list && field.list.length >= 1
+          select(name=field.key)
+            each item in field.list
+              option(value=item,
+              selected=(item===field.value)) #{item}
+        else
+          input(type='text', name=field.key,
+          value=field.value||'', readonly=field.readonly)

@@ -199,3 +199,9 @@ function saveArea(area, cb) {
     cb(!!data);
   });
 }
+function setDormsList(cb) {
+  $.get('../getdormitories.php', function (data) {
+    area.dorms = JSON.parse(data);
+    cb();
+  });
+}

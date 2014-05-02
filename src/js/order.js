@@ -21,7 +21,8 @@ function showForm(profile) {
     },
     {
       title: '宿舍楼',
-      key: 'block'
+      key: 'block',
+      list: area.dorms
     },
     {
       title: '宿舍号',
@@ -131,11 +132,13 @@ initPage(function () {
       }
 
       fetchOrderProfile(function (profile) {
-        /* list items */
-        showForm(profile);
+        setDormsList(function () {
+          /* list items */
+          showForm(profile);
 
-        /* ready */
-        loadReady();
+          /* ready */
+          loadReady();
+        });
       });
     });
   });

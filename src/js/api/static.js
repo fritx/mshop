@@ -114,7 +114,7 @@ function fetchOrdersList(cb) {
 }
 function checkAllOnSale(oItems, cb) {
   fetchProductsList(null, function (items) {
-    cb(_.every(oItems, function(oItem){
+    cb(_.every(oItems, function (oItem) {
       var item = _.findWhere(items, { id: oItem.id });
       return checkOnSale(item, oItem.num);
     }));
@@ -144,4 +144,7 @@ function saveArea(area, cb) {
     area: area.title
   }));
   cb(true);
+}
+function setDormsList(cb) {
+  cb(); // do nothing
 }
