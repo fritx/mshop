@@ -91,13 +91,16 @@ function fetchCurrOrder(cb) {
   var oItems = store.get('currOrderItems');
   async.map(oItems, function (oItem, next) {
     fetchProduct({ id: oItem.id }, function (item) {
+      if (!item) {
+        return next(null, null);
+      }
       var xItem = _.extend(oItem, {
         _price: item._price
       });
       next(null, xItem);
     });
   }, function (err, xItems) {
-    cb(xItems);
+    cb(_.compact(xItems));
   });
 }
 function fetchOrdersList(cb) {

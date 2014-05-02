@@ -88,7 +88,7 @@ function fetchCurrOrder(cb) {
       });
       return xItem;
     });
-    cb(xItems);
+    cb(_.compact(xItems));
   });
 }
 function fetchOrdersList(cb) {
