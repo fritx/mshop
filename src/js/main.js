@@ -144,10 +144,11 @@ function initPage(cb) {
   store.set('orderProfile', store.get('orderProfile') || {});
   store.set('myOrders', store.get('myOrders') || []);
 
-  $(document).delegate('[href]', 'click', function (event) {
-    event.preventDefault();
-    link($(this).attr('href'));
-    return false;
+  $(document).delegate('[href]', 'click', function (e) {
+    if (!(e.ctrlKey || e.shiftKey || e.metaKey)) {
+      e.preventDefault();
+      link($(this).attr('href'));
+    }
   });
 
   fetchAreasList(function (areas) {
