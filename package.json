@@ -1,13 +1,8 @@
 {
   "name": "mshop",
-  "version": "0.7.8",
+  "version": "0.7.9",
   "description": "An online shop adapted to mobile.",
   "homepage": "https://github.com/fritx/mshop",
-  "author": "fritx <uxfritz@163.com> (https://github.com/fritx)",
-  "scripts": {
-    "install": "npm i -g grunt-cli",
-    "start": "grunt server"
-  },
   "dependencies": {
     "express": "^3.5.0",
     "grunt": "~0.4.2",

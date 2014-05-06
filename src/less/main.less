@@ -19,8 +19,13 @@ img {
   max-width: 100%;
   height: auto;
 }
-input, select, textarea {
-  border-radius: 0 !important;
+
+input, textarea, select {
+  border-radius: @border-radius !important;
+}
+select {
+  padding-left: 0 !important;
+  text-indent: 0.6em;
 }
 
 .none {
@@ -58,9 +63,10 @@ input, select, textarea {
 }
 
 .btn {
+  border-radius: 0 !important;
+  padding: 0.6em 1.4em;
   background-color: @btn-bgcolor;
   color: @btn-color;
-  padding: 9px 28px;
   display: inline-block;
   border: none;
   zoom: 1;
