@@ -109,7 +109,9 @@ function submitOrder() {
         return notify('部分商品仍在补货中，可以先购买其他的~', true);
       }
       emptyCurrOrder(function () {
-        notify('订单提交成功', 'orders.html');
+        notify(['提交成功。',
+          '宝贝将在每天 12:30-13:00， 21:30-22:30 ',
+          '两个时间段送过上门，请注意查收~'].join(''), 'orders.html');
       });
     });
   });

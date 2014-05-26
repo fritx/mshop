@@ -246,21 +246,47 @@ module.exports = function (grunt) {
           'dist/orders.html': 'tmp/html/orders.html'
         }
       }
+    },
+
+    watch: {
+      options: {
+        livereload: true
+      },
+      css: {
+        files: ['src/less/**/*.less'],
+        tasks: ['build:css']
+      },
+      js: {
+        files: ['src/js/**/*.js'],
+        tasks: ['build:js']
+      },
+      html: {
+        files: ['src/jade/**/*.jade'],
+        tasks: ['build:jade']
+      }
     }
   });
 
   require('load-grunt-tasks')(grunt);
 
   grunt.registerTask('clear', ['clean:tmp']);
-  grunt.registerTask('check', [
+  grunt.registerTask('lint', [
     'clean', 'jshint:json',
     'less', 'csslint', 'jshint:js'
   ]);
 
-  grunt.registerTask('build', [
-    'clean', 'copy', 'less', 'cssmin',
-    'jade:jst', 'uglify',
+  grunt.registerTask('build:css', [
+    'less', 'cssmin'
+  ]);
+  grunt.registerTask('build:js', [
+    'jade:jst', 'uglify'
+  ]);
+  grunt.registerTask('build:html', [
     'jade:html', 'htmlmin'
+  ]);
+  grunt.registerTask('build', [
+    'clean', 'copy',
+    'build:css', 'build:js', 'build:html'
   ]);
 
   grunt.registerTask('server', function () {
