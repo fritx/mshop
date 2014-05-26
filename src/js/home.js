@@ -25,13 +25,9 @@ function showBrands() {
   }
   $('#brands-btn').toggleClass('active');
   $('#brands-div').toggleClass('none');
-  brandsOn = !brandsOn;
-  if (brandsOn) {
-    $(window).scrollTop($('#brands-btn').offset().top);
-  }
 }
 
-var brands, brandsOn = false;
+var brands;
 
 initPage(function () {
   $(function () {
