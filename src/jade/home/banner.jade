@@ -2,5 +2,4 @@
 if !banner.href
   - classes.push('default')
 a(href=banner.href||false, class=classes)
-  //- banner min-height 190px
   img.lazy(alt=banner.alt||'', data-original=banner.src||false)

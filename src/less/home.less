@@ -1,11 +1,15 @@
 @import "config";
 
+body {
+  background-color: #ededed;
+}
+
 #banner {
   .lazy-box {
     &.unloaded {
       overflow-y: hidden;
-      // banner min-height 150px
-      height: 190px;
+      // banner min-height 70px
+      height: 70px;
     }
   }
 }
@@ -18,7 +22,7 @@
 
 #nav {
   margin: 10px 0 0;
-  font-size: 115%;
+  /*font-size: 115%;
   a.nav-btn {
     background-color: @nav-btn-bgcolor;
     color: @nav-btn-color;
@@ -34,15 +38,32 @@
     i {
       font-size: 240%;
     }
+  }*/
+  .filter_nav {
+    background: #FEFEFE;
+    border-bottom: 1px solid #b2b2b2;
+    text-align: center;
+    line-height: 26px;
+    >.filter_btn {
+      &:hover, &:focus, &.active {
+        background-color: #f6f6f6;
+      }
+      text-decoration: none;
+      border-left: 1px solid #CCC;
+      margin-left: -1px;
+      font-size: 14px;
+      line-height: 40px;
+      color: #8C8C8C;
+    }
   }
 }
 
 #brands-div {
-  margin-top: 3px;
-  position: absolute;
+  /*position: absolute;
   width: 80%;
   left: 10%;
   font-size: 120%;
+  margin-top: 3px;
   .menu {
     background: @menu-bgcolor;
     border: 4px solid @menu-border-color;
@@ -58,6 +79,37 @@
       color: @menu-color;
       &:hover, &:focus {
         background-color: @menu-btn-bgcolor-hover;
+      }
+    }
+  }*/
+  position: relative;
+  .menu {
+    position: absolute;
+    width: 73%;
+    right: 0;
+    text-align: center;
+    .heading {
+      background-color: #222;
+      padding: 1em 0;
+      font-size: 13px;
+      color: #dd1f57;
+      border-bottom: 3px solid #414141;
+    }
+    ul {
+      font-size: 12px;
+      background: #333333;
+      li {
+        border-bottom: 1px solid #414141;
+        position: relative;
+        padding: 1em 0;
+        a {
+          display: block;
+          width: 100%;
+          height: 100%;
+          color: #FFF;
+          text-decoration: none;
+          overflow: hidden;
+        }
       }
     }
   }

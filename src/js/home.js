@@ -13,7 +13,7 @@ function listBoards(boards) {
 }
 
 function listBrands() {
-  $('#brands-div').find('.pure-menu')
+  $('#brands-div').find('.menu')
     .append(
       JST['brands']({ brands: brands })
     );

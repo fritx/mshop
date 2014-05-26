@@ -1,22 +1,31 @@
 #nav
-  .pure-g
-    - var key
-    .pure-u-1-4
-      - key = '日用'
-      a.btn.nav-btn(href='items.html?tags=#{key}')
-        i.fa.fa-sun-o
-        span= key
-    .pure-u-1-4
-      - key = '夜用'
-      a.btn.nav-btn.pull-center(href='items.html?tags=#{key}')
-        i.fa.fa-moon-o
-        span= key
-    .pure-u-1-4
-      - key = '护垫'
-      a.btn.nav-btn.pull-center(href='items.html?tags=#{key}')
-        i.fa.fa-heart-o
-        span= key
-    .pure-u-1-4
-      a#brands-btn.btn.nav-btn.pull-right(onclick='showBrands()')
-        i.fa.fa-gift
-        span 品牌
+  //-
+    .pure-g
+      - var key
+      .pure-u-1-4
+        - key = '日用'
+        a.btn.nav-btn(href='items.html?tags=#{key}')
+          i.fa.fa-sun-o
+          span= key
+      .pure-u-1-4
+        - key = '夜用'
+        a.btn.nav-btn.pull-center(href='items.html?tags=#{key}')
+          i.fa.fa-moon-o
+          span= key
+      .pure-u-1-4
+        - key = '护垫'
+        a.btn.nav-btn.pull-center(href='items.html?tags=#{key}')
+          i.fa.fa-heart-o
+          span= key
+      .pure-u-1-4
+        a#brands-btn.btn.nav-btn.pull-right(onclick='showBrands()')
+          i.fa.fa-gift
+          span 品牌
+  .filter_nav.pure-g
+    - key = '日用'
+    a.filter_btn.pure-u-1-4(href='items.html?tags=#{key}')= key
+    - key = '夜用'
+    a.filter_btn.pure-u-1-4(href='items.html?tags=#{key}')= key
+    - key = '护垫'
+    a.filter_btn.pure-u-1-4(href='items.html?tags=#{key}')= key
+    a.filter_btn.pure-u-1-4#brands-btn(onclick='showBrands()') 品牌
