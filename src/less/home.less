@@ -101,8 +101,11 @@ body {
       li {
         border-bottom: 1px solid #414141;
         position: relative;
-        padding: 1em 0;
         a {
+          &:hover, &:focus, &.active {
+            background-color: #3d3d3d;
+          }
+          padding: 1em 0;
           text-align: center;
           display: block;
           width: 100%;

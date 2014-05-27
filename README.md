@@ -1,6 +1,6 @@
 # mshop
 
-An online shop adapted to mobile.
+An online shop adapted to mobile
 
 ## Features
 

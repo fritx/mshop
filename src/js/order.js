@@ -22,11 +22,23 @@ function showForm(profile) {
     {
       title: '宿舍楼',
       key: 'block',
-      list: area.dorms
+      list: _.reduce(area.dorms, function (memo, v) {
+        memo[v] = v;
+        return memo;
+      }, {})
     },
     {
       title: '宿舍号',
       key: 'flat'
+    },
+    {
+      title: '时间段',
+      key: 'time',
+      list: {
+        '12:30~13:00': '12:30~13:00',
+        '21:30~22:30': '21:30~22:30',
+        '其他时间请填备注': ''
+      }
     },
     {
       key: 'message',
@@ -92,6 +104,11 @@ function submitOrder() {
     memo[$el.attr('name')] = $el.val();
     return memo;
   }, {});
+  // time field
+  var time = profile.time;
+  if (time) {
+    extra.message = time + '送货。 ' + extra.message;
+  }
   if (_.some(['area', 'name', 'tel', 'block', 'flat'], function (key) {
     return profile[key] === '';
   })) {
@@ -109,9 +126,10 @@ function submitOrder() {
         return notify('部分商品仍在补货中，可以先购买其他的~', true);
       }
       emptyCurrOrder(function () {
-        notify(['提交成功。',
-          '宝贝将在每天 12:30-13:00， 21:30-22:30 ',
-          '两个时间段送过上门，请注意查收~'].join(''), 'orders.html');
+        notify([
+          '提交成功！',
+          '我们将会在送货前通知您。',
+        ].join(''), 'orders.html');
       });
     });
   });
