@@ -22,6 +22,7 @@ function showForm(profile) {
     {
       title: '宿舍楼',
       key: 'block',
+      type: 'select',
       list: _.reduce(area.dorms, function (memo, v) {
         memo[v] = v;
         return memo;
@@ -34,6 +35,7 @@ function showForm(profile) {
     {
       title: '时间段',
       key: 'time',
+      type: 'radio',
       list: {
         '12:30~13:00': '12:30~13:00',
         '21:30~22:30': '21:30~22:30',

@@ -2,13 +2,20 @@ fieldset.profile-box
   each field in fields[0]
     .pure-g
       .pure-u-1-3
-        label= field.title
+        label.label= field.title
       .pure-u-2-3
-        if field.list
+        if field.type === 'select'
           select(name=field.key)
             each v, k in field.list
               option(value=v,
               selected=(v===field.value)) #{k}
+        else if field.type === 'radio'
+          .radio-set
+            each v, k in field.list
+              label.radio
+                input(type='radio', name=field.key,
+                value=v, checked=(v===field.value))
+                div #{k}
         else
           input(type='text', name=field.key,
           value=field.value||'', readonly=field.readonly)
