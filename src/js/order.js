@@ -1,63 +1,65 @@
 function showForm(profile) {
   // default fields
-  var fields = [
-    {
-      readonly: true,
-      title: '地　区',
-      key: 'area',
-      value: area.title
-    },
-    {
-      title: '收货人',
-      key: 'name'
-    },
-    {
-      title: '短　号',
-      key: 'shortTel'
-    },
-    {
-      title: '长　号',
-      key: 'tel'
-    },
-    {
-      title: '宿舍楼',
-      key: 'block',
-      type: 'select',
-      list: _.reduce(area.dorms, function (memo, v) {
-        memo[v] = v;
-        return memo;
-      }, {})
-    },
-    {
-      title: '宿舍号',
-      key: 'flat'
-    },
-    {
-      title: '时间段',
-      key: 'time',
-      type: 'radio',
-      list: {
-        '12:30~13:00': '12:30~13:00',
-        '21:30~22:30': '21:30~22:30',
-        '其他时间请填备注': ''
+  fields = [
+    [
+      {
+        readonly: true,
+        title: '地　区',
+        key: 'area',
+        value: area.title
+      },
+      {
+        title: '收货人',
+        key: 'name'
+      },
+      {
+        title: '短　号',
+        key: 'shortTel'
+      },
+      {
+        title: '长　号',
+        key: 'tel'
+      },
+      {
+        title: '宿舍楼',
+        key: 'block',
+        type: 'select',
+        list: _.reduce(area.dorms, function (memo, v) {
+          memo[v] = v;
+          return memo;
+        }, {})
+      },
+      {
+        title: '宿舍号',
+        key: 'flat'
+      },
+      {
+        title: '时间段',
+        key: 'time',
+        type: 'radio',
+        list: {
+          '12:30~13:00': '12:30~13:00',
+          '21:30~22:30': '21:30~22:30',
+          '其他时间请备注': ''
+        }
       }
-    },
-    {
-      key: 'message',
-      placeholder: '给 Great Me 留言'
-    }
+    ],
+    [
+      {
+        key: 'message',
+        placeholder: '给 Great Me 留言'
+      }
+    ]
   ];
   // fill profile
   if (profile) {
-    _.each(fields, function (field) {
+    _.each(_.flatten(fields), function (field) {
       field.value = profile[field.key] || field.value;
     });
   }
   $('#form-div')
     .html(JST['order']({
-      fields: _.partition(fields, function (field) {
-        return field.title;
-      }),
+      fields: fields,
       cost: _.reduce(oItems, function (memo, oItem) {
         return memo + oItem._price * oItem.num;
       }, 0)
@@ -96,14 +98,14 @@ function toggleButton(ok) {
 function submitOrder() {
   // disable submit button
   toggleButton(false);
-  var profile = _.reduce($('.profile-box').find('[name]'), function (memo, el) {
-    var $el = $(el);
-    memo[$el.attr('name')] = $el.val();
+  var profile = _.reduce(fields[0], function (memo, field) {
+    var $el = $('[name='+ field.key +']');
+    memo[$el.attr('name')] = getVal($el);
     return memo;
   }, {});
-  var extra = _.reduce($('.submit-box').find('[name]'), function (memo, el) {
-    var $el = $(el);
-    memo[$el.attr('name')] = $el.val();
+  var extra = _.reduce(fields[1], function (memo, field) {
+    var $el = $('[name='+ field.key +']');
+    memo[$el.attr('name')] = getVal($el);
     return memo;
   }, {});
   // time field
@@ -138,6 +140,7 @@ function submitOrder() {
 }
 
 /* variables */
+var fields;
 var oItems;
 
 initPage(function () {

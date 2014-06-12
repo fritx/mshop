@@ -11,6 +11,7 @@ fieldset.profile-box
               selected=(v===field.value)) #{k}
         else if field.type === 'radio'
           .radio-set
+            - field.value = field.value || ''
             each v, k in field.list
               label.radio
                 input(type='radio', name=field.key,

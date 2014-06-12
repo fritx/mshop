@@ -107,7 +107,8 @@ function fetchOrderProfile(cb) {
 }
 function saveOrderProfile(profile, cb) {
   store.set('orderProfile', _.pick(profile, [
-    'area', 'name', 'shortTel', 'tel', 'block', 'flat'
+    'area', 'name', 'shortTel',
+    'tel', 'block', 'flat', 'time'
   ]));
   cb();
 }
@@ -127,6 +128,18 @@ function saveCurrOrder(xItems, cb) {
 function setTitle(title, shortTitle) {
   $('title').text(title);
   $('.title-text').text(shortTitle || title);
+}
+
+function getVal($el) {
+  if ($el.attr('type') === 'radio') {
+    return $el.filter(':checked').val();
+  }
+  if ($el.attr('type') === 'checkbox') {
+    return $el.filter(':checked').map(function() {
+      return $(this).val();
+    });
+  }
+  return $el.val();
 }
 
 /* init */
