@@ -25,6 +25,16 @@ module.exports = function (grunt) {
     },
 
     copy: {
+      content: {
+        files: [
+          {
+            expand: true,
+            cwd: 'content',
+            src: '**',
+            dest: 'dist/content'
+          }
+        ]
+      },
       css: {
         files: [
           {
@@ -251,6 +261,10 @@ module.exports = function (grunt) {
     watch: {
       options: {
         livereload: true
+      },
+      content: {
+        files: ['content/**'],
+        tasks: ['copy:content']
       },
       css: {
         files: ['src/less/**/*.less'],
